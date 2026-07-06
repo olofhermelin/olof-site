@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Free NYC Home Valuation — What Is Your Home Worth? | Olof Hermelin, Douglas Elliman</title>
+<meta name="description" content="Get a free, confidential valuation of your NYC co-op, condo, or townhouse — prepared personally by Olof Hermelin, not an algorithm. Comparable sales, pricing strategy, and a clear number within 24 hours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;padding:0;background:#E7F0F7}
+  ::selection{background:#2E6591;color:#E7F0F7}
+  input::placeholder,textarea::placeholder{color:#8095A6;text-transform:uppercase;font-size:10px;letter-spacing:.22em}
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',Helvetica,Arial,sans-serif;color:#0A141D;background:#E7F0F7;font-weight:400;line-height:1.65">
+
+  <!-- NAV -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,20,29,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,240,247,.12)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding:20px 4vw">
+      <a href="index.html" style="text-decoration:none;color:#E7F0F7;font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;white-space:nowrap;flex-shrink:0">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></a>
+      <div style="display:flex;gap:24px 28px;align-items:center;flex-wrap:wrap;justify-content:flex-end;white-space:nowrap">
+        <a href="listings.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Properties</a>
+        <a href="index.html#neighborhoods" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Neighborhoods</a>
+        <a href="about.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">About</a>
+        <a href="valuation.html" style="text-decoration:none;color:#FFFFFF;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;border-bottom:1px solid #9DC3E0;padding-bottom:3px">Valuation</a>
+        <a href="tel:2125550100" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(212) 555-0100</a>
+        <a href="index.html#contact" style="text-decoration:none;background:#E7F0F7;color:#0A141D;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:12px 24px;transition:all .3s" style-hover="background:#2E6591;color:#E7F0F7">Let's Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO / FORM -->
+  <div data-screen-label="Valuation Hero" style="background:#163049;color:#E7F0F7;padding:170px 6vw 100px;text-align:center">
+    <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 18px;font-weight:600"><a href="index.html" style="color:#9DC3E0;text-decoration:none">Home</a> &nbsp;/&nbsp; <span style="color:rgba(231,240,247,.7)">Valuation</span></p>
+    <p style="font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#9DC3E0;margin:0 0 20px;font-weight:500">Complimentary Analysis — Free &amp; Confidential</p>
+    <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(40px,4.6vw,68px);margin:0 0 18px;line-height:1.06">What is your home worth?</h1>
+    <p style="opacity:.78;max-width:560px;margin:0 auto 48px;font-size:16px;line-height:1.75">A detailed, data-driven valuation of your co-op, condo, or townhouse — prepared personally by Olof, not an algorithm. Delivered within 24 hours. No obligation, ever.</p>
+    <sc-if value="{{ formPending }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onValuation }}" style="display:grid;gap:18px;max-width:560px;margin:0 auto;text-align:left">
+        <div style="display:flex;border:1px solid rgba(231,240,247,.35)">
+          <input type="text" placeholder="Property address, incl. unit" required="required" aria-label="Property address" style="flex:1;background:transparent;border:none;outline:none;color:#E7F0F7;padding:18px 22px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:.04em;min-width:0"></input>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <input type="text" placeholder="Your name" required="required" aria-label="Your name" style="background:transparent;border:1px solid rgba(231,240,247,.35);outline:none;color:#E7F0F7;padding:16px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;box-sizing:border-box;width:100%"></input>
+          <input type="email" placeholder="Email" required="required" aria-label="Email" style="background:transparent;border:1px solid rgba(231,240,247,.35);outline:none;color:#E7F0F7;padding:16px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;box-sizing:border-box;width:100%"></input>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+          <select aria-label="Property type" style="background:transparent;border:1px solid rgba(231,240,247,.35);outline:none;color:#E7F0F7;padding:16px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:13px;cursor:pointer;width:100%">
+            <option style="color:#0A141D">Co-op</option>
+            <option style="color:#0A141D">Condo</option>
+            <option style="color:#0A141D">Townhouse</option>
+            <option style="color:#0A141D">Multi-family</option>
+            <option style="color:#0A141D">Other</option>
+          </select>
+          <select aria-label="Timeline" style="background:transparent;border:1px solid rgba(231,240,247,.35);outline:none;color:#E7F0F7;padding:16px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:13px;cursor:pointer;width:100%">
+            <option style="color:#0A141D">Just curious</option>
+            <option style="color:#0A141D">Selling in 0–3 months</option>
+            <option style="color:#0A141D">Selling in 3–12 months</option>
+            <option style="color:#0A141D">Selling in 1+ years</option>
+          </select>
+        </div>
+        <button type="submit" style="background:#E7F0F7;border:none;color:#163049;padding:19px 0;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .3s" style-hover="background:#9DC3E0">Get My Free Valuation</button>
+        <p style="font-size:10px;color:rgba(231,240,247,.5);margin:0;line-height:1.7;text-align:center">Free and confidential. No spam, no obligation — your information is never shared.</p>
+      </form>
+    </sc-if>
+    <sc-if value="{{ formDone }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width:560px;margin:0 auto;border:1px solid rgba(231,240,247,.35);padding:48px 40px">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:28px;margin:0 0 12px;line-height:1.35">Thank you — your valuation is underway.</p>
+        <p style="font-size:14px;color:#B9CCDB;margin:0;line-height:1.75">Olof will personally review comparable sales and building history, and deliver your report within 24 hours. Expect a brief call or email if any detail needs confirming.</p>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div data-screen-label="How It Works" style="padding:100px 6vw">
+    <div style="text-align:center;margin-bottom:56px">
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">The Process</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(30px,3vw,46px);margin:0">How your valuation is built.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:1100px;margin:0 auto">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div style="border-top:1px solid rgba(22,35,46,.18);padding-top:26px">
+          <p style="font-family:'Newsreader',Georgia,serif;font-size:15px;color:#2E6591;margin:0 0 16px">{{ s.num }}</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 12px;line-height:1.25">{{ s.title }}</h3>
+          <p style="font-size:14px;color:#415463;margin:0;line-height:1.75">{{ s.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- NOT AN ALGORITHM -->
+  <div data-screen-label="Why Not Algorithm" style="background:#D7E5F0;display:grid;grid-template-columns:1fr 1fr;gap:5vw;align-items:center;padding:100px 6vw">
+    <div>
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 18px;font-weight:500">Why Not a Zestimate?</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0 0 22px;line-height:1.15">Algorithms can't see your apartment.</h2>
+      <p style="font-size:15px;color:#243646;margin:0 0 18px;line-height:1.8">Automated estimates struggle in New York, where two identical lines in the same building can trade 20% apart on light, floor, condition, and board policy. They don't know your renovation, your low maintenance, or that the comp next door had a compromised kitchen.</p>
+      <p style="font-size:15px;color:#243646;margin:0;line-height:1.8">A hand-built valuation weighs the things the models can't: true comparable condition, building financials, abatement schedules, and how your specific line has traded over a decade.</p>
+    </div>
+    <div style="display:grid;gap:0">
+      <sc-for list="{{ included }}" as="i" hint-placeholder-count="5">
+        <div style="display:flex;gap:18px;align-items:baseline;border-top:1px solid rgba(22,35,46,.14);padding:18px 0">
+          <span style="font-family:'Newsreader',Georgia,serif;color:#2E6591;font-size:16px;flex-shrink:0">&rarr;</span>
+          <div>
+            <p style="font-size:15px;color:#0A141D;margin:0;font-weight:500">{{ i.title }}</p>
+            <p style="font-size:13px;color:#415463;margin:4px 0 0;line-height:1.65">{{ i.text }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- RECENT RESULTS -->
+  <div data-screen-label="Valuation Results" style="padding:100px 6vw">
+    <div style="text-align:center;margin-bottom:52px">
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Pricing That Performs</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0">Recent seller outcomes.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(22,35,46,.14);border:1px solid rgba(22,35,46,.14);max-width:1100px;margin:0 auto">
+      <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="3">
+        <div style="background:#E7F0F7;padding:36px 32px">
+          <p style="font-family:'Newsreader',Georgia,serif;font-size:26px;margin:0 0 6px;color:#2E6591">{{ o.stat }}</p>
+          <p style="font-size:14px;color:#0A141D;margin:0 0 10px;font-weight:500">{{ o.addr }}</p>
+          <p style="font-size:13px;color:#415463;margin:0;line-height:1.7">{{ o.note }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size:11px;color:#8095A6;margin:28px auto 0;letter-spacing:.03em;text-align:center;max-width:1100px">Representative placeholder outcomes for design demonstration purposes.</p>
+  </div>
+
+  <!-- FAQ -->
+  <div data-screen-label="Valuation FAQ" style="background:#0F2338;color:#E7F0F7;padding:100px 6vw">
+    <div style="max-width:800px;margin:0 auto">
+      <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 14px;font-weight:600;text-align:center">Common Questions</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0 0 48px;text-align:center">Before you ask.</h2>
+      <div style="display:grid;gap:0">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+          <div style="border-top:1px solid rgba(231,240,247,.14);padding:24px 0">
+            <p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0 0 10px;line-height:1.35">{{ f.q }}</p>
+            <p style="font-size:14px;color:#B9CCDB;margin:0;line-height:1.75">{{ f.a }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <div style="text-align:center;margin-top:48px">
+        <a href="#top" onClick="{{ scrollTop }}" style="display:inline-block;text-decoration:none;background:#E7F0F7;color:#163049;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;padding:18px 42px;transition:background .3s" style-hover="background:#9DC3E0">Start My Valuation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0F2338;color:#E7F0F7;padding:0 6vw 36px">
+    <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;padding:56px 0 40px;border-top:1px solid rgba(231,240,247,.12);border-bottom:1px solid rgba(231,240,247,.12)">
+      <div>
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
+        <p style="font-size:13px;opacity:.65;margin:16px 0 0;line-height:1.9">Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (212) 555-0100 &nbsp;|&nbsp; olof@olofsellsnyc.com</p>
+      </div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+        <a href="index.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home</a>
+        <a href="listings.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Properties</a>
+        <a href="about.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">About</a>
+        <a href="valuation.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Valuation</a>
+        <a href="index.html#contact" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Contact</a>
+        <div style="display:flex;align-items:center;gap:10px;opacity:.55">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9h13v-9"></path><path d="M12 8.2 8.5 11h7z" fill="currentColor" stroke="none"></path><path d="M9.8 13h4.4M9.8 15.5h4.4"></path></svg>
+          <p style="font-size:10px;letter-spacing:.08em;margin:0">Equal Housing Opportunity</p>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;line-height:1.9;opacity:.42;margin-top:30px;letter-spacing:.03em">
+      <p style="margin:0 0 12px">&copy; 2026 Olof Hermelin. All rights reserved. Olof Hermelin is a licensed real estate salesperson affiliated with Douglas Elliman Real Estate, a licensed real estate broker in New York (license # 10991211812). Olof Hermelin fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.</p>
+      <p style="margin:0">A comparative market analysis is an opinion of value for marketing purposes; it is not a certified appraisal. This is not intended to solicit property already listed.</p>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { done: false };
+
+  renderVals() {
+    return {
+      formPending: !this.state.done,
+      formDone: this.state.done,
+      onValuation: (e) => { e.preventDefault(); this.setState({ done: true }); },
+      scrollTop: (e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); },
+      steps: [
+        { num: '01', title: 'The property', text: 'A short conversation — or a walk-through, if you prefer — covering condition, renovations, light, layout, and anything an algorithm would miss.' },
+        { num: '02', title: 'The comps, by hand', text: 'True comparable sales from the building and the block, adjusted for condition and terms — including quiet off-market trades that never hit the portals.' },
+        { num: '03', title: 'The strategy', text: 'A clear number, a pricing strategy to reach it, and an honest read on timing. Whether you sell now or in three years, you\u2019ll know where you stand.' }
+      ],
+      included: [
+        { title: 'Building-specific sale history', text: 'How your line and your neighbors have actually traded, over a decade.' },
+        { title: 'Condition-adjusted comparables', text: 'Renovation levels, outdoor space, light, and floor premiums weighed honestly.' },
+        { title: 'Carrying-cost analysis', text: 'Maintenance, common charges, abatements, and how they affect your buyer pool.' },
+        { title: 'Market timing read', text: 'Inventory and negotiability in your segment — is now the moment, or is patience worth money?' },
+        { title: 'Net-proceeds estimate', text: 'What you\u2019d actually walk away with after transfer taxes, flip tax, and fees.' }
+      ],
+      outcomes: [
+        { stat: 'Over asking', addr: '21 East 26th Street, PH — Flatiron', note: 'Record-setting sale for the building after a structured best-and-final round.' },
+        { stat: '104% of ask · 9 days', addr: '158 Mercer Street, 4A — SoHo', note: 'Priced to create competition; closed above asking in under two weeks.' },
+        { stat: 'Full price, off-market', addr: 'Townhouse — Greenwich Village', note: 'Quietly marketed to qualified buyers only; full-price contract in three weeks.' }
+      ],
+      faqs: [
+        { q: 'Is it really free?', a: 'Yes — free and without obligation. It\u2019s how many of our client relationships begin, sometimes years before a sale.' },
+        { q: 'Will you share or list my information?', a: 'Never. Your address and details stay between you and Olof. No mailing lists, no cold calls, no soliciting.' },
+        { q: 'Do I need to be ready to sell?', a: 'Not at all. Many owners request a valuation simply to plan — refinancing, estate planning, or deciding whether to renovate before selling.' },
+        { q: 'How is this different from an appraisal?', a: 'An appraisal is a certified document for lending purposes. A comparative market analysis is a pricing opinion built for one goal: what the market will actually pay for your home.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

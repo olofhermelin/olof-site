@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;padding:0;background:#E7F0F7}
+  ::selection{background:#2E6591;color:#E7F0F7}
+  input::placeholder,textarea::placeholder{color:#8095A6;text-transform:uppercase;font-size:10px;letter-spacing:.22em}
+  image-slot{display:block;width:100%;height:auto}
+  image-slot#olof-portrait{aspect-ratio:4/5}
+  image-slot#bedford-2f-floorplan{aspect-ratio:4/3;background:#FFFFFF;border:1px solid rgba(22,35,46,.12)}
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',Helvetica,Arial,sans-serif;color:#0A141D;background:#E7F0F7;font-weight:400;line-height:1.65">
+
+  <!-- NAV -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,20,29,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,240,247,.12)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding:20px 4vw">
+      <a href="#home" style="text-decoration:none;color:#E7F0F7;font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;white-space:nowrap;flex-shrink:0">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></a>
+      <div style="display:flex;gap:24px 28px;align-items:center;flex-wrap:wrap;justify-content:flex-end;white-space:nowrap">
+        <a href="listings.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Properties</a>
+        <a href="#neighborhoods" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Neighborhoods</a>
+        <a href="about.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">About</a>
+        <a href="valuation.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Valuation</a>
+        <a href="#news" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Press</a>
+        <a href="#insights" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Insights</a>
+        <a href="tel:2125550100" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(212) 555-0100</a>
+        <a href="#contact" style="text-decoration:none;background:#E7F0F7;color:#0A141D;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:12px 24px;transition:all .3s" style-hover="background:#2E6591;color:#E7F0F7">Let's Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div id="home" data-screen-label="Hero" style="position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1546436836-07a91091f160?auto=format&fit=crop&w=2400&q=80" alt="New York City skyline at dusk" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></img>
+    <div style="position:absolute;inset:0;background:linear-gradient(to top, rgba(8,17,26,.88) 0%, rgba(8,17,26,.45) 45%, rgba(8,17,26,.35) 100%)"></div>
+    <div style="position:relative;z-index:2;color:#E7F0F7;padding:160px 6vw 90px;width:100%;max-width:1100px">
+      <p style="font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:500">New York City Real Estate &nbsp;·&nbsp; Douglas Elliman</p>
+      <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(56px,6.5vw,104px);line-height:1.02;margin:0;letter-spacing:.02em">Olof Hermelin</h1>
+      <p style="font-size:17px;color:rgba(231,240,247,.85);max-width:520px;margin:26px 0 40px;line-height:1.7">The considered pursuit of New York real estate — boutique residential advisory across all five boroughs, with a resolute focus on your interests and your privacy.</p>
+      <div style="display:flex;gap:0;margin:0 0 14px">
+        <button onClick="{{ setIntentSell }}" style="{{ intentSellStyle }}">I'm Selling</button>
+        <button onClick="{{ setIntentBuy }}" style="{{ intentBuyStyle }}">I'm Buying</button>
+      </div>
+      <sc-if value="{{ isSelling }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ onHeroVal }}" style="display:flex;max-width:540px;background:#FFFFFF">
+          <input type="text" placeholder="Enter your home address" required="required" aria-label="Home address" style="flex:1;border:none;outline:none;padding:18px 22px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D;min-width:0"></input>
+          <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 30px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .3s" style-hover="background:#2E6591">Free Valuation</button>
+        </form>
+        <p style="font-size:12px;color:rgba(231,240,247,.75);margin:16px 0 0;letter-spacing:.04em">No obligation. Prepared personally by Olof within 24 hours &nbsp;·&nbsp; <a href="#listings" style="color:#9DC3E0;font-weight:500">or browse current listings &rarr;</a></p>
+      </sc-if>
+      <sc-if value="{{ isBuying }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ onHeroBuy }}" style="display:flex;max-width:540px;background:#FFFFFF">
+          <input type="text" placeholder="Neighborhood + budget, e.g. Park Slope, $2M" required="required" aria-label="What you are looking for" style="flex:1;border:none;outline:none;padding:18px 22px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D;min-width:0"></input>
+          <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 30px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .3s" style-hover="background:#2E6591">See Off-Market Homes</button>
+        </form>
+        <p style="font-size:12px;color:rgba(231,240,247,.75);margin:16px 0 0;letter-spacing:.04em">Private access to coming-soon and off-market listings — before they hit StreetEasy &nbsp;·&nbsp; <a href="#listings" style="color:#9DC3E0;font-weight:500">or browse all current listings &rarr;</a></p>
+      </sc-if>
+      <p style="font-size:11px;color:rgba(231,240,247,.5);margin:54px 0 0;letter-spacing:.04em">Committed to the principles of all applicable <a href="https://dos.ny.gov/fair-housing-resources" target="_blank" rel="noopener" style="color:rgba(231,240,247,.7)">fair housing laws</a>.</p>
+    </div>
+  </div>
+
+  <!-- CREDO -->
+  <div style="background:#0F2338;color:#E7F0F7;text-align:center;padding:88px 6vw">
+    <p style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(26px,2.8vw,42px);letter-spacing:.14em;text-transform:uppercase;margin:0;line-height:1.5">Discreet. <span style="color:#9DC3E0">Diligent.</span> Determined.</p>
+    <p style="font-size:14px;color:rgba(231,240,247,.65);max-width:560px;margin:22px auto 0;line-height:1.8">Every client, every price point, every borough — represented with the same care.</p>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <div data-screen-label="Philosophy" style="display:grid;grid-template-columns:1.1fr 1fr;gap:5vw;align-items:center;padding:110px 6vw">
+    <div>
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 18px;font-weight:500">The Practice</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);line-height:1.15;margin:0">Committed to exceeding your needs — and protecting your interests.</h2>
+    </div>
+    <div>
+      <p style="font-size:16px;color:#243646;margin:0 0 36px;line-height:1.75">Olof Hermelin provides boutique residential advisory services with a resolute focus on representing his clients' interests — and their privacy — across every price point and every borough. Great outcomes aren't found; they're worked for.</p>
+      <div style="display:grid;gap:0">
+        <a href="#about" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#0A141D;border-top:1px solid rgba(22,35,46,.14);padding:18px 0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#2E6591">Meet Olof <span style="color:#2E6591">&rarr;</span></a>
+        <a href="#valuation" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#0A141D;border-top:1px solid rgba(22,35,46,.14);padding:18px 0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#2E6591">Home Valuation <span style="color:#2E6591">&rarr;</span></a>
+        <a href="#contact" style="display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#0A141D;border-top:1px solid rgba(22,35,46,.14);border-bottom:1px solid rgba(22,35,46,.14);padding:18px 0;font-size:12px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#2E6591">Real Estate Services <span style="color:#2E6591">&rarr;</span></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPOTLIGHT -->
+  <div data-screen-label="Featured Property">
+    <div style="position:relative;height:76vh;overflow:hidden;background:#24455F">
+      <div role="img" aria-label="2100 Bedford Avenue, 2F — featured photo" style="{{ spotImgStyle }}"></div>
+      <button onClick="{{ spotPrev }}" aria-label="Previous photo" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);z-index:3;width:56px;height:56px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:20px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&larr;</button>
+      <button onClick="{{ spotNext }}" aria-label="Next photo" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);z-index:3;width:56px;height:56px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:20px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&rarr;</button>
+      <p style="position:absolute;right:28px;bottom:20px;z-index:3;margin:0;color:#E7F0F7;background:rgba(10,20,29,.55);font-size:11px;letter-spacing:.18em;padding:8px 14px">{{ spotCount }}</p>
+      <button onClick="{{ toggleVid1 }}" style="position:absolute;left:28px;bottom:20px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.55);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 22px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">{{ vid1Label }}</button>
+      <sc-if value="{{ vid1Open }}" hint-placeholder-val="{{ false }}">
+        <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw" title="2100 Bedford Avenue 2F video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+      </sc-if>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:36px 6vw 0">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 10px;font-weight:500">Featured Exclusive — For Sale</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0;line-height:1.15">2100 Bedford Avenue, 2F</h2>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:10px 0 0">Prospect Lefferts Gardens &nbsp;·&nbsp; 1 BD &nbsp;·&nbsp; 1 BA &nbsp;·&nbsp; 643 Sq.Ft. &nbsp;·&nbsp; 421a Through 2034</p>
+        <p style="font-size:10px;color:#8095A6;margin:14px 0 0;letter-spacing:.04em">Listing Courtesy of Olof Hermelin, Douglas Elliman Real Estate.</p>
+      </div>
+      <div style="text-align:right">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:clamp(28px,2.6vw,38px);margin:0">$599,000</p>
+        <a href="2100-bedford-avenue-2f.html" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:15px 34px;margin-top:16px;transition:background .3s" style-hover="background:#2E6591">View Full Listing</a>
+      </div>
+    </div>
+
+    <!-- FLOORPLAN -->
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;gap:5vw;align-items:center;padding:56px 6vw 0">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Floorplan</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(24px,2.2vw,32px);margin:0 0 14px;line-height:1.2">A layout that lives larger than its footprint.</h3>
+        <p style="font-size:14px;color:#415463;margin:0;line-height:1.75">643 square feet arranged around a flexible living room that fits dining, lounging, or a home office — with a king-size bedroom and a double-width closet.</p>
+      </div>
+      <img src="data:image/webp;base64,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" alt="2100 Bedford Avenue 2F floor plan" style="display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#FFFFFF;border:1px solid rgba(22,35,46,.12)">
+    </div>
+  </div>
+
+  <!-- SPOTLIGHT RENTAL -->
+  <div data-screen-label="Featured Rental" style="margin-top:90px">
+    <div style="position:relative;height:76vh;overflow:hidden;background:#24455F">
+      <div role="img" aria-label="120 Riverside Boulevard, 10P — featured photo" style="{{ spot2ImgStyle }}"></div>
+      <button onClick="{{ spot2Prev }}" aria-label="Previous photo" style="position:absolute;left:24px;top:50%;transform:translateY(-50%);z-index:3;width:56px;height:56px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:20px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&larr;</button>
+      <button onClick="{{ spot2Next }}" aria-label="Next photo" style="position:absolute;right:24px;top:50%;transform:translateY(-50%);z-index:3;width:56px;height:56px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:20px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&rarr;</button>
+      <p style="position:absolute;right:28px;bottom:20px;z-index:3;margin:0;color:#E7F0F7;background:rgba(10,20,29,.55);font-size:11px;letter-spacing:.18em;padding:8px 14px">{{ spot2Count }}</p>
+      <button onClick="{{ toggleVid2 }}" style="position:absolute;left:28px;bottom:20px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.55);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 22px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">{{ vid2Label }}</button>
+      <sc-if value="{{ vid2Open }}" hint-placeholder-val="{{ false }}">
+        <iframe src="https://www.youtube.com/embed/SYzEOrjawQg" title="120 Riverside Boulevard 10P video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+      </sc-if>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:36px 6vw 0">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 10px;font-weight:500">Featured Exclusive — For Rent</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0;line-height:1.15">120 Riverside Boulevard, 10P</h2>
+        <p style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:10px 0 0">Lincoln Square &nbsp;·&nbsp; 1 BD &nbsp;·&nbsp; 1 BA &nbsp;·&nbsp; 721 Sq.Ft. &nbsp;·&nbsp; Available Aug 1</p>
+        <p style="font-size:10px;color:#8095A6;margin:14px 0 0;letter-spacing:.04em">Listing Courtesy of Olof Hermelin, Douglas Elliman Real Estate.</p>
+      </div>
+      <div style="text-align:right">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:clamp(28px,2.6vw,38px);margin:0">$5,200<span style="font-size:16px;color:#415463"> / month</span></p>
+        <a href="#contact" style="display:inline-block;text-decoration:none;border:1px solid #0A141D;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:14px 34px;margin-top:16px;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7">Inquire</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LISTINGS -->
+  <div id="listings" data-screen-label="Listings" style="padding:110px 6vw">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:44px">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Portfolio</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(36px,3.6vw,54px);margin:0;line-height:1.1">Exclusive Listings</h2>
+        <a href="listings.html" style="display:inline-block;margin-top:16px;text-decoration:none;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #2E6591;padding-bottom:6px;transition:color .3s" style-hover="color:#2E6591">Search &amp; Filter All Listings &rarr;</a>
+      </div>
+      <div style="display:flex;gap:8px">
+        <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px">
+      <sc-for list="{{ listings }}" as="l" hint-placeholder-count="6">
+        <div onClick="{{ l.onClick }}" style="cursor:pointer">
+          <div style="position:relative;overflow:hidden;aspect-ratio:4/5;background:#D3E2EE">
+            <div role="img" aria-label="{{ l.addr }}" style="{{ l.imgStyle }}" style-hover="transform:scale(1.05)"></div>
+            <span style="{{ l.tagStyle }}">{{ l.tag }}</span>
+          </div>
+          <div style="padding-top:20px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px">
+              <p style="font-family:'Newsreader',Georgia,serif;font-size:24px;margin:0">{{ l.price }}</p>
+            </div>
+            <p style="font-size:14px;letter-spacing:.04em;margin:4px 0 0;color:#0A141D">{{ l.addr }}</p>
+            <p style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:8px 0 0">{{ l.meta }}</p>
+            <p style="font-size:10px;color:#8095A6;margin:8px 0 0;letter-spacing:.03em">{{ l.courtesy }}</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <p style="font-size:11px;color:#8095A6;margin:44px 0 0;letter-spacing:.03em">All property information shown is placeholder content for demonstration purposes. Live listing data will be provided via the REBNY RLS/IDX feed upon launch.</p>
+
+    <!-- OFF-MARKET PROPERTIES -->
+    <div id="offmarket" style="margin-top:90px">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:40px">
+        <div>
+          <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Private Inventory</p>
+          <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(30px,3vw,44px);margin:0;line-height:1.1">Off-Market Properties</h2>
+        </div>
+        <p style="font-size:14px;color:#415463;max-width:420px;margin:0;line-height:1.7">Homes that never reach the portals — quietly marketed, coming soon, or fully private. Shared one-to-one with qualified buyers only.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+        <div onClick="{{ openOffmarket }}" style="background:#163049;color:#E7F0F7;padding:44px 38px;cursor:pointer;transition:background .3s" style-hover="background:#1E3D5C">
+          <p style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:600">Private Exclusive</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.25">Brownstone Brooklyn Townhouse</h3>
+          <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,240,247,.6);margin:0 0 30px">4+ BD &nbsp;·&nbsp; Garden &nbsp;·&nbsp; $3–4M Range</p>
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9DC3E0;margin:0;font-weight:600">Address Upon Request &rarr;</p>
+        </div>
+        <div onClick="{{ openOffmarket }}" style="background:#163049;color:#E7F0F7;padding:44px 38px;cursor:pointer;transition:background .3s" style-hover="background:#1E3D5C">
+          <p style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:600">Coming Soon</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.25">Upper West Side Prewar Co-op</h3>
+          <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,240,247,.6);margin:0 0 30px">2 BD &nbsp;·&nbsp; Park Block &nbsp;·&nbsp; Under $2M</p>
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9DC3E0;margin:0;font-weight:600">Address Upon Request &rarr;</p>
+        </div>
+        <div onClick="{{ openOffmarket }}" style="background:#163049;color:#E7F0F7;padding:44px 38px;cursor:pointer;transition:background .3s" style-hover="background:#1E3D5C">
+          <p style="font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:600">Quietly Marketed</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 8px;line-height:1.25">Lincoln Square Condo, River Views</h3>
+          <p style="font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(231,240,247,.6);margin:0 0 30px">1 BD &nbsp;·&nbsp; Full Service &nbsp;·&nbsp; Rental</p>
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9DC3E0;margin:0;font-weight:600">Address Upon Request &rarr;</p>
+        </div>
+      </div>
+      <p style="font-size:11px;color:#8095A6;margin:20px 0 0;letter-spacing:.03em">Categories shown are illustrative of current private inventory. Per RLS rules, off-market and owner opt-out listings are shared through one-to-one communication only — never published or mass-marketed.</p>
+    </div>
+
+    <!-- OFF-MARKET ACCESS BAND -->
+    <div style="margin-top:40px;background:#163049;color:#E7F0F7;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:56px 5vw">
+      <div>
+        <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 12px;font-weight:600">For Buyers — Private Access</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(26px,2.4vw,36px);margin:0 0 12px;line-height:1.2">The best homes never hit StreetEasy.</h3>
+        <p style="font-size:14px;color:#B9CCDB;margin:0;line-height:1.7;max-width:520px">Coming-soon, quietly marketed, and off-market properties across the five boroughs — matched to your criteria and sent to you first.</p>
+      </div>
+      <form onSubmit="{{ onBuyerBand }}" style="display:flex;background:#E7F0F7;border:1px solid rgba(231,240,247,.4)">
+        <input type="text" placeholder="Neighborhood + budget" required="required" aria-label="Your search criteria" style="flex:1;border:none;outline:none;padding:17px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D;min-width:0"></input>
+        <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 26px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .3s" style-hover="background:#2E6591">Get Access</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div id="about" data-screen-label="About" style="display:grid;grid-template-columns:5fr 6fr;gap:6vw;align-items:center;padding:110px 6vw;background:#D7E5F0">
+    <div>
+      <img src="data:image/webp;base64,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" alt="Olof Hermelin — Licensed Real Estate Salesperson, Douglas Elliman" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover">
+    </div>
+    <div>
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 16px;font-weight:500">Meet Olof — Douglas Elliman Real Estate</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0 0 30px;line-height:1.12">One of New York's Trusted Advisors</h2>
+      <p style="font-size:15px;color:#243646;margin:0 0 20px;line-height:1.75">Olof brings an infectious enthusiasm and exceptional energy to his work in New York City real estate. He genuinely loves interacting with people — getting to know his clients, understanding what they need, and advocating for it relentlessly through every step of a deal.</p>
+      <p style="font-size:15px;color:#243646;margin:0 0 30px;line-height:1.75">A Licensed Real Estate Salesperson at Douglas Elliman, Olof has closed hundreds of transactions across sales and rentals — representing sellers, buyers, landlords, and tenants throughout Manhattan, Brooklyn, and Queens.</p>
+      <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:26px;color:#2E6591;margin:0 0 30px">Olof Hermelin</p>
+      <a href="#contact" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:18px 38px;transition:background .3s" style-hover="background:#2E6591">Work With Olof</a>
+    </div>
+  </div>
+
+  <!-- TRACK RECORD -->
+  <div data-screen-label="Track Record" style="padding:110px 6vw">
+    <div style="text-align:center">
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">The Practice</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">Depth across every market.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;max-width:980px;margin:56px auto 0">
+      <div style="text-align:center;border-top:1px solid rgba(22,35,46,.18);padding-top:28px">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:clamp(24px,2.2vw,32px);margin:0;line-height:1.2">Co-ops, Condos <span style="color:#2E6591">&amp;</span> Townhouses</p>
+        <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#415463;margin:14px 0 0">From Studios to Trophy Homes</p>
+      </div>
+      <div style="text-align:center;border-top:1px solid rgba(22,35,46,.18);padding-top:28px">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:clamp(24px,2.2vw,32px);margin:0;line-height:1.2">Sales <span style="color:#2E6591">&amp;</span> Rentals</p>
+        <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#415463;margin:14px 0 0">Both Sides of Every Deal</p>
+      </div>
+      <div style="text-align:center;border-top:1px solid rgba(22,35,46,.18);padding-top:28px">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:clamp(24px,2.2vw,32px);margin:0;line-height:1.2">All Five Boroughs</p>
+        <p style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:#415463;margin:14px 0 0">One Practice, No Handoffs</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUATION -->
+  <div id="valuation" data-screen-label="Valuation" style="background:#163049;color:#E7F0F7;padding:120px 6vw;text-align:center">
+    <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 18px;font-weight:500">Complimentary Analysis</p>
+    <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.8vw,52px);margin:0 0 16px">What Is Your Home Worth?</h2>
+    <p style="opacity:.75;max-width:520px;margin:0 auto 44px;font-size:15px">Receive a detailed, data-driven valuation of your property — prepared personally by Olof, not an algorithm. Free, confidential, no obligation.</p>
+    <form onSubmit="{{ onValuation }}" style="display:flex;max-width:560px;margin:0 auto;border:1px solid rgba(231,240,247,.35)">
+      <input type="text" placeholder="Enter your home address" required="required" aria-label="Home address" style="flex:1;background:transparent;border:none;outline:none;color:#E7F0F7;padding:18px 22px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;letter-spacing:.04em"></input>
+      <button type="submit" style="background:#E7F0F7;border:none;color:#163049;padding:0 32px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;cursor:pointer">Get Valuation</button>
+    </form>
+    <p style="font-size:12px;margin:24px 0 0"><a href="valuation.html" style="color:#9DC3E0;letter-spacing:.06em">See how the valuation is built &rarr;</a></p>
+  </div>
+
+  <!-- NEIGHBORHOODS -->
+  <div id="neighborhoods" data-screen-label="Neighborhoods" style="padding:110px 6vw">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Where We Work</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">Neighborhood Guides</h2>
+      </div>
+      <p style="font-size:14px;color:#415463;max-width:420px;margin:0;line-height:1.7">Nine districts, one practice. Each guide covers housing stock, food, culture, and the commute — written from years of walking these blocks with buyers.</p>
+    </div>
+
+    <!-- FEATURED GUIDE -->
+    <a href="prospect-lefferts-gardens.html" style="display:grid;grid-template-columns:7fr 5fr;margin-top:52px;background:#0F2338;color:#E7F0F7;text-decoration:none;overflow:hidden">
+      <div style="position:relative;min-height:420px;overflow:hidden">
+        <div role="img" aria-label="Prospect Lefferts Gardens" style="position:absolute;inset:0;background-image:url('https://images.pexels.com/photos/29419908/pexels-photo-29419908.jpeg?auto=compress&cs=tinysrgb&w=1400');background-size:cover;background-position:center;transition:transform .8s ease" style-hover="transform:scale(1.05)"></div>
+      </div>
+      <div style="padding:56px 52px;display:flex;flex-direction:column;justify-content:center">
+        <p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 14px;font-weight:600">Featured Guide</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(30px,2.8vw,42px);margin:0 0 10px;line-height:1.1">Prospect Lefferts Gardens</h3>
+        <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:18px;color:#9DC3E0;margin:0 0 20px">The park at your doorstep, history on every block.</p>
+        <p style="font-size:14px;color:rgba(231,240,247,.75);margin:0 0 34px;line-height:1.75">Landmarked rowhouses, grand prewar co-ops on Ocean Avenue, and the eastern meadows of Prospect Park two minutes away — brownstone Brooklyn character before the rest of the market catches up.</p>
+        <span style="display:inline-block;align-self:flex-start;border:1px solid rgba(231,240,247,.4);color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:15px 34px;transition:all .3s" style-hover="background:#E7F0F7;color:#0F2338">Read the Full Guide</span>
+      </div>
+    </a>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px">
+      <sc-for list="{{ hoodsRest }}" as="h" hint-placeholder-count="8">
+        <div onClick="{{ h.onClick }}" style="position:relative;aspect-ratio:4/5;overflow:hidden;display:flex;align-items:flex-end;color:#E7F0F7;background:#24455F;cursor:pointer">
+          <div role="img" aria-label="{{ h.name }}" style="{{ h.imgStyle }}" style-hover="transform:scale(1.06)"></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(12,28,42,.85));pointer-events:none"></div>
+          <div style="position:relative;z-index:2;padding:22px;pointer-events:none">
+            <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;letter-spacing:.02em">{{ h.name }}</h3>
+            <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:13px;margin:6px 0 10px;opacity:.85;line-height:1.45">{{ h.tagline }}</p>
+            <p style="font-size:9px;letter-spacing:.26em;text-transform:uppercase;margin:0;color:#9DC3E0;font-weight:600">Read the Guide &rarr;</p>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- MARKET REPORTS -->
+  <div id="reports" style="background:#163049;color:#E7F0F7;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:72px 6vw">
+    <div>
+      <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 12px;font-weight:600">Monthly Market Reports</p>
+      <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(26px,2.4vw,36px);margin:0 0 12px;line-height:1.2">Know your market before you move.</h3>
+      <p style="font-size:14px;color:#B9CCDB;margin:0;line-height:1.7;max-width:520px">Neighborhood-level pricing, inventory, and negotiability — distilled to one readable email each month. No fluff, no spam.</p>
+    </div>
+    <form onSubmit="{{ onMarketReport }}" style="display:flex;background:#E7F0F7">
+      <input type="email" placeholder="Email address" required="required" aria-label="Email for market reports" style="flex:1;border:none;outline:none;padding:17px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D;min-width:0"></input>
+      <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 26px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .3s" style-hover="background:#2E6591">Sign Me Up</button>
+    </form>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div id="testimonials" data-screen-label="Testimonials" style="padding:110px 6vw;background:#D7E5F0;text-align:center">
+    <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Client Stories</p>
+    <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">Testimonials</h2>
+    <div style="display:flex;align-items:center;gap:32px;max-width:1000px;margin:56px auto 0">
+      <button onClick="{{ prevTesti }}" aria-label="Previous testimonial" style="background:none;border:1px solid rgba(22,35,46,.2);width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:16px;color:#415463;flex-shrink:0;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7;border-color:#0A141D">&larr;</button>
+      <div style="flex:1;min-height:220px;display:flex;flex-direction:column;justify-content:center">
+        <blockquote style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-weight:300;font-size:clamp(22px,2.4vw,30px);line-height:1.5;margin:0 0 28px">&ldquo;{{ quote }}&rdquo;</blockquote>
+        <p style="font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#415463;margin:0;font-weight:500">{{ who }}</p>
+      </div>
+      <button onClick="{{ nextTesti }}" aria-label="Next testimonial" style="background:none;border:1px solid rgba(22,35,46,.2);width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:16px;color:#415463;flex-shrink:0;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7;border-color:#0A141D">&rarr;</button>
+    </div>
+    <div style="display:flex;gap:10px;justify-content:center;margin-top:36px">
+      <sc-for list="{{ dots }}" as="d" hint-placeholder-count="5">
+        <button onClick="{{ d.onClick }}" aria-label="Go to testimonial" style="{{ d.style }}"></button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- NEWS -->
+  <div id="news" data-screen-label="Press" style="padding:110px 6vw">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Press &amp; Media</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">In the News</h2>
+      </div>
+      <a href="#contact" style="text-decoration:none;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #2E6591;padding-bottom:6px;transition:color .3s" style-hover="color:#2E6591">View All Press</a>
+    </div>
+    <div style="margin-top:44px">
+      <a href="#contact" style="display:grid;grid-template-columns:200px 1fr auto;gap:36px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(22,35,46,.14);text-decoration:none;color:#0A141D;transition:padding-left .3s" style-hover="padding-left:16px">
+        <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0;font-weight:500">Placeholder Publication</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.35">The Power Brokers Shaping New York's Luxury Market</h3>
+        <p style="font-size:11px;letter-spacing:.12em;color:#8095A6;text-transform:uppercase;margin:0">May 2026</p>
+      </a>
+      <a href="#contact" style="display:grid;grid-template-columns:200px 1fr auto;gap:36px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(22,35,46,.14);text-decoration:none;color:#0A141D;transition:padding-left .3s" style-hover="padding-left:16px">
+        <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0;font-weight:500">Placeholder Publication</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.35">Record-Setting Penthouse Sale Closes Above Asking in Flatiron</h3>
+        <p style="font-size:11px;letter-spacing:.12em;color:#8095A6;text-transform:uppercase;margin:0">March 2026</p>
+      </a>
+      <a href="#contact" style="display:grid;grid-template-columns:200px 1fr auto;gap:36px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(22,35,46,.14);text-decoration:none;color:#0A141D;transition:padding-left .3s" style-hover="padding-left:16px">
+        <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0;font-weight:500">Placeholder Publication</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.35">Manhattan's Ultra-Luxury Market Defies the Downturn</h3>
+        <p style="font-size:11px;letter-spacing:.12em;color:#8095A6;text-transform:uppercase;margin:0">February 2026</p>
+      </a>
+      <a href="#contact" style="display:grid;grid-template-columns:200px 1fr auto;gap:36px;align-items:baseline;padding:28px 0;border-bottom:1px solid rgba(22,35,46,.14);text-decoration:none;color:#0A141D;transition:padding-left .3s" style-hover="padding-left:16px">
+        <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0;font-weight:500">Placeholder Publication</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.35">Top NYC Agents to Watch This Year</h3>
+        <p style="font-size:11px;letter-spacing:.12em;color:#8095A6;text-transform:uppercase;margin:0">January 2026</p>
+      </a>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div id="insights" data-screen-label="Insights" style="padding:0 6vw 110px">
+    <div style="text-align:center">
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Market Intelligence</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">Real Estate Insights</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px">
+      <div style="border:1px solid rgba(22,35,46,.12)">
+        <div style="overflow:hidden;aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1554469384-e58fac16e23a?auto=format&fit=crop&w=800&q=80" alt="NYC co-op building facade" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease" style-hover="transform:scale(1.05)"></img></div>
+        <div style="padding:28px">
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0 0 12px;font-weight:500">June 2026 — Buying</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.3">Surviving the Co-op Board Interview</h3>
+          <p style="font-size:14px;color:#415463;margin:0 0 20px;line-height:1.65">Part cocktail hour, part financial exam. What boards actually look for — and the mistakes that sink otherwise perfect applications.</p>
+          <a href="coop-board-interview.html" style="text-decoration:none;color:#0A141D;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #2E6591;padding-bottom:5px;transition:color .3s" style-hover="color:#2E6591">Read More</a>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(22,35,46,.12)">
+        <div style="overflow:hidden;aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1460317442991-0ec209397118?auto=format&fit=crop&w=800&q=80" alt="Brooklyn apartment buildings" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease" style-hover="transform:scale(1.05)"></img></div>
+        <div style="padding:28px">
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0 0 12px;font-weight:500">May 2026 — Selling</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.3">The Art of the Bidding War</h3>
+          <p style="font-size:14px;color:#415463;margin:0 0 20px;line-height:1.65">When multiple offers land, strategy matters more than price. How we structure best-and-final rounds to maximize seller outcomes.</p>
+          <a href="#contact" style="text-decoration:none;color:#0A141D;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #2E6591;padding-bottom:5px;transition:color .3s" style-hover="color:#2E6591">Read More</a>
+        </div>
+      </div>
+      <div style="border:1px solid rgba(22,35,46,.12)">
+        <div style="overflow:hidden;aspect-ratio:16/10"><img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&w=800&q=80" alt="Manhattan skyline at dusk" style="width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s ease" style-hover="transform:scale(1.05)"></img></div>
+        <div style="padding:28px">
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#2E6591;margin:0 0 12px;font-weight:500">April 2026 — Market</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0 0 10px;line-height:1.3">Pied-à-Terre Buyers Are Back</h3>
+          <p style="font-size:14px;color:#415463;margin:0 0 20px;line-height:1.65">International and out-of-state buyers are returning to Manhattan. What that means for pricing in prime doorman buildings.</p>
+          <a href="#contact" style="text-decoration:none;color:#0A141D;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #2E6591;padding-bottom:5px;transition:color .3s" style-hover="color:#2E6591">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA BAND -->
+  <div data-screen-label="CTA" style="position:relative;color:#E7F0F7;text-align:center;padding:140px 6vw;overflow:hidden">
+    <img src="https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=2200&q=80" alt="Manhattan skyline" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></img>
+    <div style="position:absolute;inset:0;background:rgba(12,28,42,.62)"></div>
+    <div style="position:relative;z-index:2">
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 18px;font-weight:500">Ready When You Are</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(38px,4.4vw,60px);margin:0 0 18px">Work With Olof</h2>
+      <p style="opacity:.8;max-width:540px;margin:0 auto 44px;font-size:15px">Personalized solutions that bring clients closer to their dream properties and enhance their long-term wealth.</p>
+      <a href="#contact" style="display:inline-block;text-decoration:none;border:1px solid #E7F0F7;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:18px 42px;transition:all .3s" style-hover="background:#E7F0F7;color:#0A141D">Let's Connect</a>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div style="padding:100px 6vw;text-align:center;background:#D7E5F0">
+    <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Free Guide</p>
+    <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(30px,3vw,44px);margin:0 0 12px">The New York Seller's Playbook</h2>
+    <p style="color:#415463;max-width:520px;margin:0 auto 36px;font-size:15px">Pricing strategy, staging, timing, and negotiation — what actually moves the number when you sell in NYC. Yours free, plus monthly market analysis.</p>
+    <form onSubmit="{{ onNewsletter }}" style="display:flex;max-width:520px;margin:0 auto;background:#E7F0F7;border:1px solid rgba(22,35,46,.16)">
+      <input type="email" placeholder="Email address" required="required" aria-label="Email for free guide" style="flex:1;border:none;outline:none;padding:17px 22px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D"></input>
+      <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 32px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.24em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:background .3s" style-hover="background:#2E6591">Send Me the Guide</button>
+    </form>
+    <p style="font-size:11px;color:#8095A6;max-width:560px;margin:22px auto 0;line-height:1.7">By providing your email address, you consent to receiving marketing communications from Olof Hermelin. Consent is not a condition of purchase of any goods or services. You may unsubscribe at any time.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" data-screen-label="Contact" style="background:#163049;color:#E7F0F7;display:grid;grid-template-columns:1fr 1fr;gap:6vw;padding:110px 6vw">
+    <div>
+      <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 16px;font-weight:500">Get In Touch</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0;line-height:1.15">Let's Find Your Place in the City</h2>
+      <div style="margin-top:40px;display:grid;gap:24px">
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Mobile</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(212) 555-0100</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Office</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(212) 891-7000</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Email</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">olof@olofsellsnyc.com</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Office</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">Douglas Elliman — 575 Madison Avenue, New York, NY 10022</p></div>
+      </div>
+    </div>
+    <sc-if value="{{ contactPending }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onContact }}" style="display:grid;gap:22px;align-content:start">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+          <input type="text" placeholder="First Name" required="required" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;box-sizing:border-box"></input>
+          <input type="text" placeholder="Last Name" required="required" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;box-sizing:border-box"></input>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:22px">
+          <input type="email" placeholder="Email" required="required" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;box-sizing:border-box"></input>
+          <input type="tel" placeholder="Phone" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;box-sizing:border-box"></input>
+        </div>
+        <select required="required" aria-label="I am interested in" default-value="" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;cursor:pointer">
+          <option value="" disabled="disabled" style="color:#0A141D">I'm interested in…</option>
+          <option style="color:#0A141D">Selling</option>
+          <option style="color:#0A141D">Buying</option>
+          <option style="color:#0A141D">Selling &amp; Buying</option>
+          <option style="color:#0A141D">Renting</option>
+          <option style="color:#0A141D">Other</option>
+        </select>
+        <textarea placeholder="Message" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(231,240,247,.3);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:12px 0;outline:none;resize:vertical;min-height:90px;box-sizing:border-box"></textarea>
+        <p style="font-size:11px;color:rgba(231,240,247,.5);line-height:1.7;margin:0">By providing your contact information, your personal information will be processed in accordance with our Privacy Policy. Consent is not a condition of purchase of any goods or services. Message and data rates may apply; reply STOP to unsubscribe from SMS.</p>
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:11px;color:rgba(231,240,247,.6);line-height:1.6;cursor:pointer">
+          <input type="checkbox" required="required" style="margin-top:3px;accent-color:#9DC3E0"></input>
+          <span>Yes, I agree to receive email or phone call communications from Olof Hermelin.</span>
+        </label>
+        <label style="display:flex;gap:12px;align-items:flex-start;font-size:11px;color:rgba(231,240,247,.6);line-height:1.6;cursor:pointer">
+          <input type="checkbox" style="margin-top:3px;accent-color:#9DC3E0"></input>
+          <span>Yes, I agree to receive SMS text messages from Olof Hermelin.</span>
+        </label>
+        <button type="submit" style="justify-self:start;background:transparent;border:1px solid #E7F0F7;color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:17px 42px;cursor:pointer;transition:all .3s" style-hover="background:#E7F0F7;color:#163049">Submit</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ contactDone }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;align-items:center">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:28px;line-height:1.4;margin:0">Thank you for your message.<br></br>We will be in touch with you shortly.</p>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0F2338;color:#E7F0F7;padding:80px 6vw 40px">
+    <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(231,240,247,.12)">
+      <div>
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
+        <p style="font-size:13px;opacity:.65;margin:20px 0 0;line-height:1.9">Licensed as Olof Hermelin<br></br>Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (212) 555-0100 &nbsp;|&nbsp; o: (212) 891-7000<br></br>olof@olofsellsnyc.com</p>
+        <div style="display:flex;gap:14px;margin-top:28px">
+          <a href="#" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IG</a>
+          <a href="#" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">FB</a>
+          <a href="#" aria-label="LinkedIn" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IN</a>
+          <a href="https://www.youtube.com/@olofsellsnyc" target="_blank" rel="noopener" aria-label="YouTube — olofsellsnyc" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">YT</a>
+          <a href="#" aria-label="Zillow" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">Z</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:500">Navigate</p>
+        <div style="display:grid;gap:12px">
+          <a href="listings.html" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Search All Listings</a>
+          <a href="#listings" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Featured Properties</a>
+          <a href="#neighborhoods" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Neighborhood Guides</a>
+          <a href="about.html" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">About Olof</a>
+          <a href="#news" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Press &amp; Media</a>
+          <a href="#contact" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Contact</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:500">Resources</p>
+        <div style="display:grid;gap:12px">
+          <a href="valuation.html" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home Valuation</a>
+          <a href="#insights" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Real Estate Insights</a>
+          <a href="#offmarket" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Off-Market Access</a>
+          <a href="#contact" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Seller's Guide</a>
+          <a href="#testimonials" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Testimonials</a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 22px;font-weight:500">Office</p>
+        <div style="display:grid;gap:12px">
+          <p style="font-size:13px;opacity:.65;margin:0">Douglas Elliman Real Estate</p>
+          <p style="font-size:13px;opacity:.65;margin:0">575 Madison Avenue</p>
+          <p style="font-size:13px;opacity:.65;margin:0">New York, NY 10022</p>
+          <a href="tel:2128917000" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">(212) 891-7000</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;margin-top:26px;opacity:.55">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9h13v-9"></path><path d="M12 8.2 8.5 11h7z" fill="currentColor" stroke="none"></path><path d="M9.8 13h4.4M9.8 15.5h4.4"></path></svg>
+          <p style="font-size:11px;letter-spacing:.08em;margin:0">Equal Housing Opportunity</p>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;line-height:1.9;opacity:.42;margin-top:40px;letter-spacing:.03em">
+      <p style="margin:0 0 14px"><a href="https://www.elliman.com/media/NYS_HOUSING_DISCRIMINATION_DISCLOSURE_NOTICE_and_FORM_dc897abbe2.pdf" target="_blank" rel="noopener" style="color:#E7F0F7">NYS Housing Discrimination Disclosure Notice</a> &nbsp;|&nbsp; <a href="https://www.elliman.com/media/NYS_STANDARD_OPERATING_PROCEDURE_f13e96d2e7.pdf" target="_blank" rel="noopener" style="color:#E7F0F7">Standard Operating Procedures</a> &nbsp;|&nbsp; <a href="https://www.elliman.com/media/NYS_TENANTS_RIGHTS_TO_REASONABLE_ACCOMMODATIONS_FOR_PERSONS_WITH_DISABILITIES_0a1ddddc70.pdf" target="_blank" rel="noopener" style="color:#E7F0F7">Reasonable Accommodations</a> &nbsp;|&nbsp; <a href="#" style="color:#E7F0F7">Privacy Policy</a> &nbsp;|&nbsp; <a href="#" style="color:#E7F0F7">Accessibility</a></p>
+      <p style="margin:0 0 14px">&copy; 2026 Olof Hermelin. All rights reserved. Olof Hermelin is a licensed real estate salesperson affiliated with Douglas Elliman Real Estate, a licensed real estate broker in New York (license # 10991211812). Olof Hermelin fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.</p>
+      <p style="margin:0 0 14px">All material presented herein is intended for informational purposes only. Information is compiled from sources deemed reliable but is subject to errors, omissions, changes in price, condition, sale, or withdrawal without notice. No statement is made as to the accuracy of any description. All measurements and square footages are approximate. This is not intended to solicit property already listed. Nothing herein shall be construed as legal, accounting or other professional advice outside the realm of real estate brokerage.</p>
+      <p style="margin:0">Listing information for certain New York City properties will be provided courtesy of the Real Estate Board of New York's Residential Listing Service (the "RLS") upon launch. The listing information provided is for the consumer's personal, non-commercial use. All property content on this page is placeholder material for design demonstration purposes.</p>
+    </div>
+  </div>
+
+  <!-- MODAL -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:400;background:rgba(12,28,42,.85);display:flex;align-items:center;justify-content:center;padding:4vw">
+      <div onClick="{{ stopProp }}" style="background:#E7F0F7;max-width:880px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:1.2fr 1fr">
+        <div style="display:flex;flex-direction:column;min-height:320px">
+          <div style="position:relative;flex:1;display:flex">
+            <div role="img" aria-label="{{ modal.addr }}" style="{{ modalImgStyle }}"></div>
+            <sc-if value="{{ modalVidOpen }}" hint-placeholder-val="{{ false }}">
+              <iframe src="{{ modalVideoSrc }}" title="Property video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+            </sc-if>
+            <sc-if value="{{ modalHasVideo }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ toggleModalVid }}" style="position:absolute;left:12px;bottom:12px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.6);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:10px 16px;cursor:pointer">{{ modalVidLabel }}</button>
+            </sc-if>
+            <sc-if value="{{ modalHasPhotos }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ modalPrevPhoto }}" aria-label="Previous photo" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:16px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&larr;</button>
+              <button onClick="{{ modalNextPhoto }}" aria-label="Next photo" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:16px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&rarr;</button>
+            </sc-if>
+          </div>
+          <sc-if value="{{ modalHasPhotos }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex;gap:6px;padding:8px;background:#0F2338">
+              <sc-for list="{{ modalPhotos }}" as="ph" hint-placeholder-count="5">
+                <button onClick="{{ ph.onClick }}" aria-label="View photo" style="{{ ph.style }}"></button>
+              </sc-for>
+            </div>
+          </sc-if>
+        </div>
+        <div style="padding:42px">
+          <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#2E6591;margin:0 0 6px;font-weight:500">{{ modal.tag }}</p>
+          <p style="font-family:'Newsreader',Georgia,serif;font-size:32px;margin:0 0 6px">{{ modal.price }}</p>
+          <p style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:0 0 22px">{{ modal.addr }} — {{ modal.meta }}</p>
+          <p style="font-size:14px;color:#243646;margin:0 0 28px;line-height:1.7">{{ modal.desc }}</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <sc-if value="{{ modalHasPage }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ modalHref }}" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:16px 32px;transition:background .3s" style-hover="background:#2E6591">View Full Listing</a>
+            </sc-if>
+            <a href="#contact" onClick="{{ closeModal }}" style="display:inline-block;text-decoration:none;border:1px solid #0A141D;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:15px 32px;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7">Inquire</a>
+          </div>
+        </div>
+      </div>
+      <button onClick="{{ closeModal }}" aria-label="Close" style="position:fixed;top:22px;right:28px;background:none;border:none;color:#E7F0F7;font-size:34px;cursor:pointer;line-height:1">&times;</button>
+    </div>
+  </sc-if>
+
+  <!-- NEIGHBORHOOD GUIDE MODAL -->
+  <sc-if value="{{ hoodOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeHood }}" style="position:fixed;inset:0;z-index:400;background:rgba(12,28,42,.85);display:flex;align-items:center;justify-content:center;padding:4vw">
+      <div onClick="{{ stopProp }}" style="background:#E7F0F7;max-width:920px;width:100%;max-height:88vh;overflow:auto;position:relative">
+        <button onClick="{{ closeHood }}" aria-label="Close" style="position:absolute;top:14px;right:18px;z-index:3;background:rgba(12,28,42,.5);border:none;color:#E7F0F7;font-size:24px;cursor:pointer;line-height:1;width:40px;height:40px;border-radius:50%">&times;</button>
+        <div style="{{ hoodImgStyle }}"></div>
+        <div style="padding:44px 48px 48px">
+          <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#2E6591;margin:0 0 10px;font-weight:600">Neighborhood Guide</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:38px;margin:0 0 6px;line-height:1.1;color:#0A141D">{{ hood.name }}</h3>
+          <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:19px;color:#2E6591;margin:0 0 34px">{{ hood.tagline }}</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px 40px">
+            <sc-for list="{{ hoodSections }}" as="s" hint-placeholder-count="6">
+              <div style="border-top:1px solid rgba(22,35,46,.14);padding-top:16px">
+                <p style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#2E6591;margin:0 0 8px;font-weight:600">{{ s.label }}</p>
+                <p style="font-size:14px;color:#243646;margin:0;line-height:1.7">{{ s.text }}</p>
+              </div>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:16px;align-items:center;margin-top:38px;flex-wrap:wrap">
+            <a href="#contact" onClick="{{ closeHood }}" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:16px 36px;transition:background .3s" style-hover="background:#2E6591">Find a Home Here</a>
+            <p style="font-size:12px;color:#8095A6;margin:0">Ask Olof about current inventory in {{ hood.name }}.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- LEAD CAPTURE MODAL -->
+  <sc-if value="{{ leadOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeLead }}" style="position:fixed;inset:0;z-index:450;background:rgba(12,28,42,.85);display:flex;align-items:center;justify-content:center;padding:4vw">
+      <div onClick="{{ stopProp }}" style="background:#E7F0F7;max-width:480px;width:100%;padding:48px 44px;position:relative">
+        <button onClick="{{ closeLead }}" aria-label="Close" style="position:absolute;top:14px;right:18px;background:none;border:none;color:#415463;font-size:26px;cursor:pointer;line-height:1">&times;</button>
+        <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#2E6591;margin:0 0 10px;font-weight:600">Step 2 of 2</p>
+        <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:28px;margin:0 0 8px;line-height:1.2;color:#0A141D">{{ leadTitle }}</h3>
+        <p style="font-size:13px;color:#415463;margin:0 0 6px;line-height:1.6">{{ leadIntro }}</p>
+        <p style="font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:17px;color:#2E6591;margin:0 0 26px">{{ leadAddress }}</p>
+        <form onSubmit="{{ onLeadSubmit }}" style="display:grid;gap:18px">
+          <input type="text" placeholder="Full Name" required="required" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(22,35,46,.25);color:#0A141D;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:11px 0;outline:none;box-sizing:border-box"></input>
+          <input type="email" placeholder="Email" required="required" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(22,35,46,.25);color:#0A141D;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:11px 0;outline:none;box-sizing:border-box"></input>
+          <input type="tel" placeholder="Phone (optional)" style="width:100%;background:transparent;border:none;border-bottom:1px solid rgba(22,35,46,.25);color:#0A141D;font-family:'Hanken Grotesk',sans-serif;font-size:14px;padding:11px 0;outline:none;box-sizing:border-box"></input>
+          <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:600;padding:17px 0;cursor:pointer;margin-top:8px;transition:background .3s" style-hover="background:#2E6591">{{ leadCta }}</button>
+        </form>
+        <p style="font-size:10px;color:#8095A6;margin:18px 0 0;line-height:1.7">Free and confidential. No spam, no obligation — your information is never shared.</p>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- SLIDE-IN VALUATION PROMPT -->
+  <sc-if value="{{ slideVisible }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:28px;right:28px;z-index:350;background:#163049;color:#E7F0F7;max-width:320px;padding:28px;box-shadow:0 18px 50px rgba(0,0,0,.28)">
+      <button onClick="{{ dismissSlide }}" aria-label="Dismiss" style="position:absolute;top:8px;right:12px;background:none;border:none;color:rgba(231,240,247,.6);font-size:20px;cursor:pointer;line-height:1">&times;</button>
+      <p style="font-size:10px;letter-spacing:.26em;text-transform:uppercase;color:#9DC3E0;margin:0 0 8px;font-weight:600">Free &amp; Confidential</p>
+      <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;margin:0 0 16px;line-height:1.3">Curious what your home is worth?</p>
+      <button onClick="{{ openLeadBlank }}" style="width:100%;background:#E7F0F7;border:none;color:#163049;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;padding:14px 0;cursor:pointer">Get My Free Valuation</button>
+    </div>
+  </sc-if>
+
+  <!-- TOAST -->
+  <div style="{{ toastStyle }}">{{ toastMsg }}</div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultListingTab&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;sale&quot;,&quot;options&quot;:[&quot;sale&quot;,&quot;contract&quot;,&quot;sold&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Listings&quot;},&quot;autoRotateTestimonials&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Testimonials&quot;}}">
+class Component extends DCLogic {
+  state = { tab: null, modal: null, hood: null, ti: 0, toast: '', contactDone: false, leadOpen: false, leadAddress: '', slideShow: false, slideDismissed: false, leadCaptured: false, intent: 'sell', leadKind: 'sell' };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ modal: null, leadOpen: false, hood: null }); };
+    window.addEventListener('keydown', this._esc);
+    this._onScroll = () => {
+      const show = window.scrollY > 1600;
+      if (show !== this.state.slideShow) this.setState({ slideShow: show });
+    };
+    window.addEventListener('scroll', this._onScroll, { passive: true });
+    this._startRotate();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._esc);
+    window.removeEventListener('scroll', this._onScroll);
+    clearInterval(this._timer);
+  }
+  _startRotate() {
+    clearInterval(this._timer);
+    if (this.props.autoRotateTestimonials ?? true) {
+      this._timer = setInterval(() => {
+        this.setState(s => ({ ti: (s.ti + 1) % this._testis.length }));
+      }, 6500);
+    }
+  }
+  _showToast(msg) {
+    clearTimeout(this._toastT);
+    this.setState({ toast: msg });
+    this._toastT = setTimeout(() => this.setState({ toast: '' }), 3800);
+  }
+
+  _allListings = [
+    { status: 'sale', tag: 'New Listing', href: '2100-bedford-avenue-2f.html', img: 'https://photos.zillowstatic.com/fp/092aeb059b23901fa21c48a080a81953-full.webp',
+      photos: [
+        'https://photos.zillowstatic.com/fp/092aeb059b23901fa21c48a080a81953-full.webp',
+        'https://photos.zillowstatic.com/fp/21a485535e6648e6a0e19cfe0c136f41-full.webp',
+        'https://photos.zillowstatic.com/fp/f1cc95be8f00800c0f81589db3729c1f-full.webp',
+        'https://photos.zillowstatic.com/fp/1463fb8d78847d93fca9823d474aa4de-full.webp',
+        'https://photos.zillowstatic.com/fp/68ef7a90f1ed2427e12f0afd225dcd96-full.webp',
+        'https://photos.zillowstatic.com/fp/abda855d42603a367b996099ab8215d3-full.webp',
+        'https://photos.zillowstatic.com/fp/4276d5b77355aa6a3f3a946e41827827-full.webp',
+        'https://photos.zillowstatic.com/fp/ad045dbe9f89e452a24dd9b828c8f202-full.webp',
+        'https://photos.zillowstatic.com/fp/d8915146bfab5ed9f9a39755cdd188da-full.webp',
+        'https://photos.zillowstatic.com/fp/b154f1dcd55b7650a29467a195b1c4cd-full.webp',
+        'https://photos.zillowstatic.com/fp/e43e441a73f5969a07d349168f96db6b-full.webp',
+        'https://photos.zillowstatic.com/fp/cef2dfed024bfe4610a5d14877134547-full.webp',
+        'https://photos.zillowstatic.com/fp/34a10cb351da7f1a8eddc0935d9d0369-full.webp',
+        'https://photos.zillowstatic.com/fp/ca477033f78cb0b8f222d6f7239b51f5-full.webp',
+        'https://photos.zillowstatic.com/fp/1f45aa49d1efd67a2abd93f28b6e1bf5-full.webp',
+        'https://photos.zillowstatic.com/fp/be36200e9ddb2fc3b190b67e874097bf-full.webp'
+      ],
+      video: '-9ZvNcXj3xw',
+      price: '$599,000', addr: '2100 Bedford Avenue, 2F — Prospect Lefferts Gardens', meta: '1 BD · 1 BA · 643 Sq.Ft. · Condo', courtesy: 'Listing Courtesy of Olof Hermelin, Douglas Elliman', desc: 'A contemporary one-bedroom condominium at the crossroads of Prospect Lefferts Gardens, Flatbush, and Prospect Park South. Floor-to-ceiling windows, open kitchen with breakfast island and custom walnut cabinetry, king-size bedroom with double-width closet, and a spa-style bath with deep soaking tub — plus a deeded storage unit and in-unit washer/dryer. A 421a tax abatement in place through 2034 keeps carrying costs remarkably low.' },
+    { status: 'rent', tag: 'For Rent', img: 'https://photos.zillowstatic.com/fp/1ccb5610d96cd3366376b5fd08dc4c47-full.webp',
+      photos: [
+        'https://photos.zillowstatic.com/fp/1ccb5610d96cd3366376b5fd08dc4c47-full.webp',
+        'https://photos.zillowstatic.com/fp/697fec392492d862bf1cc4df567a6c9f-full.webp',
+        'https://photos.zillowstatic.com/fp/f94b7a8811daca069f60b2923d4c5cbd-full.webp',
+        'https://photos.zillowstatic.com/fp/1559d099878103da41b71e41e2643828-full.webp',
+        'https://photos.zillowstatic.com/fp/e241ea5c050027e3a5bdec57ee23d331-full.webp',
+        'https://photos.zillowstatic.com/fp/02db2df93bb461fbced89a9a28cce40b-full.webp',
+        'https://photos.zillowstatic.com/fp/f4f9c726d21cb5431d8a21590af16d2f-full.webp',
+        'https://photos.zillowstatic.com/fp/2ef28e274a74e4f89325c87130c3d5f0-full.webp',
+        'https://photos.zillowstatic.com/fp/40184baa23b2a18a7e65cc1d336346c9-full.webp',
+        'https://photos.zillowstatic.com/fp/398fd3acaf6dfda0df52d0fcae58366d-full.webp',
+        'https://photos.zillowstatic.com/fp/8992a46152a3d19ba1af986428966d11-full.webp',
+        'https://photos.zillowstatic.com/fp/464d8dbaa90a11a6313d6ae7118aa5da-full.webp',
+        'https://photos.zillowstatic.com/fp/f5ca1df0e8456aebd8828833312dff73-full.webp',
+        'https://photos.zillowstatic.com/fp/6e744777a7ec03df292afa5d617f2a19-full.webp',
+        'https://photos.zillowstatic.com/fp/bbd42d85006fff27e4d3e9226ca0afe6-full.webp'
+      ],
+      video: 'SYzEOrjawQg',
+      price: '$5,200 / month', addr: '120 Riverside Boulevard, 10P — Lincoln Square', meta: '1 BD · 1 BA · 721 Sq.Ft. · Available Aug 1', courtesy: 'Listing Courtesy of Olof Hermelin, Douglas Elliman', desc: 'A gracious one-bedroom in a white-glove Riverside Boulevard condominium between West 65th and 66th Streets. Entry foyer, eastern light, custom walk-in closet, marble bath, and in-unit washer/dryer, with 12,000 square feet of amenities below — indoor pool, fitness center, steam and sauna — plus a rooftop deck with sweeping Hudson River views. Moments to Riverside Park and Lincoln Center.' },
+    { status: 'sale', tag: 'For Sale', img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80', price: '$8,950,000', addr: '120 Hudson Street, PH-A — Tribeca', meta: '4 BD · 4.5 BA · 4,200 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "A full-floor penthouse atop one of Tribeca's most coveted lofts. Keyed elevator entry, 11-foot ceilings, chef's kitchen, and a 1,200 sq.ft. private terrace with open Hudson views." },
+    { status: 'sale', tag: 'For Sale', img: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=900&q=80', price: '$12,500,000', addr: '14 East 74th Street — Upper East Side', meta: '6 BD · 5 BA · 6,800 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'A 20-foot-wide limestone townhouse one block from Central Park. Six stories, elevator, landscaped garden, and a wood-paneled library. A rare offering on a premier UES block.' },
+    { status: 'sale', tag: 'New Listing', img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80', price: '$5,275,000', addr: '86 Remsen Street — Brooklyn Heights', meta: '5 BD · 3.5 BA · 4,500 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "An impeccably restored Greek Revival brownstone on one of Brooklyn Heights' most storied streets. Original detail throughout, plus a chef's kitchen opening to a south-facing garden." },
+    { status: 'sale', tag: 'For Sale', img: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80', price: '$3,850,000', addr: '45 Charles Street, 8C — West Village', meta: '3 BD · 2.5 BA · 2,100 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Corner three-bedroom in a boutique West Village condominium. Oversized casement windows, white oak floors, and a windowed eat-in kitchen. Full-service building with gym and roof deck.' },
+    { status: 'sale', tag: 'Pocket Listing', img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80', price: '$2,395,000', addr: 'Sutton Place — Address Upon Request', meta: '1 BD · 2 BA · Wraparound Terrace', courtesy: 'Offered Exclusively by Olof Hermelin', desc: "Terrace lover's dream with stunning city and river views. Offered privately and never publicly listed — contact us directly for details and access." },
+    { status: 'sale', tag: 'New Listing', img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80', price: '$1,995,000', addr: '22-44 Jackson Avenue, 30F — Long Island City', meta: '2 BD · 2 BA · 1,350 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "High-floor two-bedroom in LIC's premier waterfront tower. Floor-to-ceiling glass with direct skyline views, private balcony, and 30,000 sq.ft. of amenities." },
+    { status: 'contract', tag: 'In Contract', img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=900&q=80', price: '$2,650,000', addr: '175 Kent Avenue, 5B — Williamsburg', meta: '3 BD · 2 BA · 1,900 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Authentic loft living on the Williamsburg waterfront. Exposed brick, 14-foot beamed ceilings, and a wall of factory windows facing the Manhattan skyline.' },
+    { status: 'contract', tag: 'In Contract', img: 'https://images.unsplash.com/photo-1560448075-bb485b067938?auto=format&fit=crop&w=900&q=80', price: '$2,395,000', addr: '160 Riverside Drive, 11D — Upper West Side', meta: '3 BD · 2 BA · 1,800 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Classic six in a white-glove prewar co-op on Riverside Drive. Formal dining room, staff room, and protected river views. In contract after one week on market.' },
+    { status: 'sold', tag: 'Sold', img: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=900&q=80', price: '$7,400,000', addr: '21 East 26th Street, PH — Flatiron', meta: '4 BD · 4 BA · 3,600 Sq.Ft.', courtesy: 'Represented the Seller', desc: 'Record-setting sale for the building. Duplex penthouse with double-height great room and wraparound terrace overlooking Madison Square Park. Sold over asking in a competitive bidding process.' },
+    { status: 'sold', tag: 'Sold', img: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80', price: '$4,900,000', addr: '158 Mercer Street, 4A — SoHo', meta: '3 BD · 3 BA · 2,700 Sq.Ft.', courtesy: 'Represented the Seller', desc: 'Mint-condition three-bedroom at a coveted SoHo address. Represented the seller; closed at 104% of asking price after 9 days on market.' },
+    { status: 'sold', tag: 'Sold', img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80', price: '$1,875,000', addr: '110 Amity Street, 3B — Cobble Hill', meta: '2 BD · 2 BA · 1,200 Sq.Ft.', courtesy: 'Represented the Buyer', desc: 'Turnkey two-bedroom condo in prime Cobble Hill. Represented the buyer; negotiated 6% below asking in a multiple-offer environment.' }
+  ];
+
+  _testis = [
+    { quote: "Olof sold our Upper West Side apartment in eleven days, above asking. From staging to closing, every detail was flawless. We wouldn't call anyone else.", who: 'Sarah & David M. — Sellers, Upper West Side' },
+    { quote: 'As first-time buyers we were completely overwhelmed. Olof walked us through every step — including a co-op board interview we were dreading — and made it painless.', who: 'James L. — Buyer, Astoria' },
+    { quote: "Three deals with Olof and counting. His knowledge of the Brooklyn market is unmatched, and he's always two steps ahead of the market.", who: 'Priya & Anders K. — Investors, Park Slope' },
+    { quote: 'Olof quietly marketed our townhouse off-market and delivered a full-price buyer in three weeks. Discretion, strategy, and results.', who: 'The R. Family — Sellers, Greenwich Village' },
+    { quote: "Good, sound, smart advice is the key. Olof's knowledge of the market — particularly its difficulties — was crucial to getting our deal done.", who: 'Ruth & Peter G. — Buyers, Carnegie Hill' }
+  ];
+
+  _mapHood(h) {
+    return {
+      ...h,
+      imgStyle: {
+        position: 'absolute', inset: 0, backgroundImage: `url(${h.img})`,
+        backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform .8s ease'
+      },
+      onClick: () => this.setState({ hood: h })
+    };
+  }
+
+  _hoods = [
+    { name: 'Upper East Side', img: 'https://images.unsplash.com/photo-1500916434205-0c77489c6cf7?auto=format&fit=crop&w=800&q=80',
+      tagline: 'Old-world elegance beside Central Park.',
+      vibe: 'White-glove co-ops, museum steps, and quiet tree-lined blocks. The UES moves at a civilized pace — morning runs on the reservoir, evenings at a corner bistro.',
+      housing: 'Grand prewar co-ops on Fifth and Park, limestone townhouses on the side streets, and better value in walk-ups and postwar condos east of Third Avenue.',
+      food: 'Old-school institutions like Café Boulud and Daniel share the neighborhood with wine bars on Second Avenue and bagel counters that have fed generations.',
+      shopping: 'Madison Avenue is the spine — designer flagships, galleries, and consignment gems — with everyday errands handled on Lexington and Third.',
+      arts: 'Museum Mile: the Met, the Guggenheim, the Frick, the Neue Galerie. Few places on earth pack more art into a twenty-block walk.',
+      transit: 'The 4/5/6 and the Q down Second Avenue; crosstown buses through the park; 20 minutes to Midtown.' },
+    { name: 'West Village', img: 'https://images.pexels.com/photos/19928146/pexels-photo-19928146.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Crooked streets, storybook townhouses.',
+      vibe: 'The rare Manhattan neighborhood that ignores the grid. Cobblestones, hidden courtyards, and a village feel that has drawn writers and artists for a century.',
+      housing: 'Federal and Greek Revival townhouses, intimate co-ops, and a handful of coveted new condos along the Hudson. Inventory is scarce — that is the point.',
+      food: 'Some of the city\u2019s hardest reservations — Via Carota, I Sodi, 4 Charles — plus corner cafés where regulars still get their table.',
+      shopping: 'Bleecker Street boutiques, independent bookshops, and weekend flower stalls. Small-scale and personal, by design.',
+      arts: 'Off-Broadway stages like the Lucille Lortel, jazz at the Village Vanguard, and the Whitney anchoring the neighborhood\u2019s western edge.',
+      transit: 'The 1/2/3 and A/C/E at 14th Street, PATH to New Jersey, and the Hudson River Greenway for cycling the length of Manhattan.' },
+    { name: 'Tribeca & SoHo', img: 'https://images.pexels.com/photos/5261128/pexels-photo-5261128.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Cast-iron lofts, cobblestone calm.',
+      vibe: 'Former warehouses turned into the city\u2019s most coveted loft district. Quiet, cinematic streets by night; galleries, families, and film festivals by day.',
+      housing: 'Authentic full-floor lofts with 12-foot ceilings and keyed elevators, alongside amenity-rich new towers. Among the highest price points in Manhattan.',
+      food: 'From Michelin-starred rooms like Frenchette territory to neighborhood standbys — Tribeca does polished; SoHo does buzzy all-day cafés.',
+      shopping: 'SoHo remains a global retail stage — flagships on Broadway, designers on Greene and Mercer — while Tribeca keeps to galleries and design showrooms.',
+      arts: 'Dozens of galleries below Canal, the Drawing Center, and the Tribeca Festival each June.',
+      transit: 'Nearly every line converges here — 1/2/3, A/C/E, N/Q/R/W, 4/5/6 — with Canal and Chambers as the hubs.' },
+    { name: 'Brownstone Brooklyn', img: 'https://images.pexels.com/photos/29419908/pexels-photo-29419908.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Stoops, gardens, and Victorian rows.',
+      vibe: 'Park Slope, Cobble Hill, Fort Greene, Brooklyn Heights — leafy blocks of 19th-century rowhouses where stoop life is a genuine social institution.',
+      housing: 'Four-story brownstones (whole or by the floor), prewar co-ops, and carriage houses. The Heights offers Promenade views; the Slope borders Prospect Park.',
+      food: 'Court Street Italian institutions, Vanderbilt Avenue\u2019s restaurant row, and farm-to-table pioneers that made Brooklyn a culinary byword.',
+      shopping: 'Atlantic Avenue antiques, Smith Street boutiques, and the Park Slope Food Coop — famous, beloved, and member-run since 1973.',
+      arts: 'BAM\u2019s opera house and film program in Fort Greene, St. Ann\u2019s Warehouse under the bridge, and the Brooklyn Museum up the parkway.',
+      transit: 'The 2/3, 4/5, F, and R fan out across the district; many blocks are one stop from Wall Street.' },
+    { name: 'Williamsburg & Greenpoint', img: 'https://images.unsplash.com/photo-1518391846015-55a9cc003b25?auto=format&fit=crop&w=800&q=80',
+      tagline: 'Waterfront skyline, creative energy.',
+      vibe: 'The East River waterfront turned into parks and glass towers, backed by blocks of lofts, music venues, and Polish bakeries holding their ground in Greenpoint.',
+      housing: 'Converted factory lofts, new waterfront condos with full skyline views, and vinyl-sided rowhouses inland that still offer relative value.',
+      food: 'A restaurant scene that rivals Manhattan — smoked meats at Peter Luger territory, tasting menus, natural wine bars, and 24-hour diners.',
+      shopping: 'Independent labels on Bedford and Grand, record shops, vintage warehouses, and Artists & Fleas on weekends.',
+      arts: 'Live music at Brooklyn Steel and Music Hall of Williamsburg, gallery rows in Greenpoint, and open-studio weekends across former factories.',
+      transit: 'The L from Bedford, the G linking to Queens and Brooklyn, NYC Ferry from two piers, and the Pulaski Bridge bike lane.' },
+    { name: 'LIC & Astoria', img: 'https://images.pexels.com/photos/33056445/pexels-photo-33056445.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Skyline views at a Queens address.',
+      vibe: 'Long Island City\u2019s glass towers face Midtown across the river; Astoria keeps its low-rise, deeply multicultural neighborhood character a mile north.',
+      housing: 'Full-amenity high-rise condos and rentals in LIC — often 20–30% below comparable Manhattan pricing — and prewar co-ops and two-family homes in Astoria.',
+      food: 'Astoria is one of the city\u2019s great eating neighborhoods: Greek tavernas, Middle Eastern grills, and beer gardens. LIC adds a fast-growing café and omakase scene.',
+      shopping: 'Steinway Street\u2019s mile of retail, weekend markets at Socrates Sculpture Park, and LIC\u2019s ground-floor retail filling in fast.',
+      arts: 'MoMA PS1, the Noguchi Museum, Socrates Sculpture Park, and the Museum of the Moving Image — a world-class museum circuit in two zip codes.',
+      transit: 'The 7, N/W, E/M/G, and NYC Ferry; Court Square to Grand Central in under 10 minutes.' },
+    { name: 'Harlem', img: 'https://images.pexels.com/photos/20184839/pexels-photo-20184839.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Landmark brownstones, living history.',
+      vibe: 'The capital of Black American culture — gospel Sundays, jazz nights, and some of the most beautiful rowhouse blocks in the city, from Strivers\u2019 Row to Sugar Hill.',
+      housing: 'Late-19th-century brownstones at a fraction of downtown prices, handsome prewar co-ops on the avenues, and new condos along Frederick Douglass Boulevard.',
+      food: 'Red Rooster and Sylvia\u2019s on Lenox, West African kitchens on 116th, and a wave of chef-driven newcomers along the FDB restaurant corridor.',
+      shopping: '125th Street\u2019s retail spine, the Malcolm Shabazz Harlem Market, and independent designers and booksellers on Lenox Avenue.',
+      arts: 'The Apollo Theater, the Studio Museum, the Schomburg Center, and National Jazz Museum — an unmatched cultural inheritance, still very much alive.',
+      transit: 'The 2/3, A/B/C/D, and 4/5/6 all serve Harlem; Metro-North from 125th Street reaches Grand Central in 12 minutes.' },
+    { name: 'The Bronx', img: 'https://images.pexels.com/photos/28744088/pexels-photo-28744088.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Parkland, grand boulevards, real value.',
+      vibe: 'The city\u2019s greenest borough — a quarter of it is parkland — with Art Deco boulevards, a fierce local pride, and the best price-per-square-foot in New York.',
+      housing: 'Art Deco co-ops on the Grand Concourse, Victorian houses in Riverdale, and rowhouses in Mott Haven, where a new gallery-and-café scene is taking root.',
+      food: 'Arthur Avenue — the real Little Italy — plus Puerto Rican, Dominican, Mexican, and West African kitchens that make the Bronx a serious food destination.',
+      shopping: 'Arthur Avenue\u2019s markets and butchers, Fordham Road\u2019s retail corridor, and weekend markets in the South Bronx.',
+      arts: 'The Bronx Museum of the Arts (always free), Wave Hill\u2019s gardens over the Hudson, Yankee Stadium, and the birthplace-of-hip-hop landmarks.',
+      transit: 'The 4, B/D, 2/5, and 6 lines; Metro-North\u2019s Hudson and Harlem lines make Riverdale a 25-minute ride to Grand Central.' },
+    { name: 'Upper West Side', img: 'https://images.pexels.com/photos/30362643/pexels-photo-30362643.jpeg?auto=compress&cs=tinysrgb&w=900',
+      tagline: 'Between two parks, built for living.',
+      vibe: 'Bookish, family-oriented, and framed by Central Park and Riverside Park. The UWS is the neighborhood people move to when they decide to stay in New York.',
+      housing: 'Monumental prewar co-ops on Central Park West — the Dakota, the San Remo — classic sixes and sevens on West End, and brownstones on the cross streets.',
+      food: 'Zabar\u2019s and Barney Greengrass are civic institutions; Amsterdam Avenue stacks bistros, ramen counters, and wine bars block after block.',
+      shopping: 'Broadway\u2019s book and food halls, Columbus Avenue boutiques, and the Grand Bazaar market on Sundays at 77th Street.',
+      arts: 'Lincoln Center — the Met Opera, NY Philharmonic, City Ballet — plus the Beacon Theatre and the American Museum of Natural History.',
+      transit: 'The 1/2/3 down Broadway and the B/C on Central Park West; crosstown buses at 66th, 79th, and 86th.' }
+  ];
+
+  renderVals() {
+    const tab = this.state.tab ?? (this.props.defaultListingTab ?? 'sale');
+    const tabDefs = [
+      { key: 'sale', label: 'For Sale' },
+      { key: 'rent', label: 'For Rent' },
+      { key: 'contract', label: 'In Contract' },
+      { key: 'sold', label: 'Notable Sales' }
+    ];
+    const tabBase = {
+      fontFamily: "'Hanken Grotesk',sans-serif", fontSize: '11px', letterSpacing: '.22em',
+      textTransform: 'uppercase', fontWeight: 500, padding: '13px 26px', cursor: 'pointer',
+      border: '1px solid rgba(22,35,46,.2)', background: 'transparent', color: '#415463', transition: 'all .3s'
+    };
+    const tabs = tabDefs.map(t => ({
+      label: t.label,
+      style: t.key === tab ? { ...tabBase, background: '#0A141D', color: '#E7F0F7', borderColor: '#0A141D' } : tabBase,
+      onClick: () => this.setState({ tab: t.key })
+    }));
+
+    const tagBase = {
+      position: 'absolute', top: '14px', left: '14px', zIndex: 2, fontSize: '9px',
+      letterSpacing: '.24em', textTransform: 'uppercase', fontWeight: 600, padding: '8px 14px',
+      fontFamily: "'Hanken Grotesk',sans-serif"
+    };
+    const tagStyles = {
+      'Sold': { ...tagBase, background: '#2E6591', color: '#E7F0F7' },
+      'Pocket Listing': { ...tagBase, background: '#E7F0F7', color: '#0A141D' }
+    };
+    const listings = this._allListings.filter(l => l.status === tab).map(l => ({
+      ...l,
+      imgStyle: {
+        width: '100%', height: '100%', backgroundImage: `url(${l.img})`,
+        backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform .8s ease'
+      },
+      tagStyle: tagStyles[l.tag] || { ...tagBase, background: 'rgba(22,35,46,.9)', color: '#E7F0F7' },
+      onClick: () => this.setState({ modal: l, modalPhotoIdx: 0, modalVid: false })
+    }));
+
+    const mPhotos = (this.state.modal && this.state.modal.photos) || [];
+    const mIdx = Math.min(this.state.modalPhotoIdx || 0, Math.max(mPhotos.length - 1, 0));
+
+    const spotPhotos = (this._allListings[0].photos) || [this._allListings[0].img];
+    const sIdx = ((this.state.spotIdx || 0) % spotPhotos.length + spotPhotos.length) % spotPhotos.length;
+
+    const spot2Photos = (this._allListings[1].photos) || [this._allListings[1].img];
+    const s2Idx = ((this.state.spot2Idx || 0) % spot2Photos.length + spot2Photos.length) % spot2Photos.length;
+
+    const t = this._testis[this.state.ti];
+    const dots = this._testis.map((_, i) => ({
+      onClick: () => { this.setState({ ti: i }); this._startRotate(); },
+      style: {
+        width: '34px', height: '2px', border: 'none', padding: 0, cursor: 'pointer',
+        background: i === this.state.ti ? '#2E6591' : 'rgba(22,35,46,.18)', transition: 'background .3s'
+      }
+    }));
+
+    const intentBase = {
+      fontFamily: "'Hanken Grotesk',sans-serif", fontSize: '11px', letterSpacing: '.18em',
+      textTransform: 'uppercase', fontWeight: 600, padding: '11px 22px', cursor: 'pointer',
+      border: '1px solid rgba(231,240,247,.35)', borderBottom: 'none', background: 'transparent',
+      color: 'rgba(231,240,247,.8)', transition: 'all .3s'
+    };
+    const intentActive = { ...intentBase, background: '#FFFFFF', color: '#0A141D', borderColor: '#FFFFFF' };
+
+    return {
+      tabs, listings,
+      hoodFeature: this._mapHood(this._hoods[0]),
+      hoodsRest: this._hoods.map(h => this._mapHood(h)),
+      hoodOpen: !!this.state.hood,
+      hood: this.state.hood || {},
+      hoodImgStyle: {
+        height: '220px', background: '#24455F',
+        backgroundImage: this.state.hood ? `url(${this.state.hood.img})` : 'none',
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      },
+      hoodSections: this.state.hood ? [
+        { label: 'The Vibe', text: this.state.hood.vibe },
+        { label: 'Housing', text: this.state.hood.housing },
+        { label: 'Food & Drink', text: this.state.hood.food },
+        { label: 'Shops & Markets', text: this.state.hood.shopping },
+        { label: 'Arts & Culture', text: this.state.hood.arts },
+        { label: 'Getting Around', text: this.state.hood.transit }
+      ] : [],
+      closeHood: () => this.setState({ hood: null }),
+      spotImgStyle: {
+        position: 'absolute', inset: 0, backgroundImage: `url(${spotPhotos[sIdx]})`,
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      },
+      spotCount: `${sIdx + 1} / ${spotPhotos.length}`,
+      spotPrev: () => this.setState(s => ({ spotIdx: (s.spotIdx || 0) - 1, vid1: false })),
+      spotNext: () => this.setState(s => ({ spotIdx: (s.spotIdx || 0) + 1, vid1: false })),
+      vid1Open: !!this.state.vid1,
+      vid1Label: this.state.vid1 ? 'Back to Photos' : '\u25B6 Video Tour',
+      toggleVid1: () => this.setState(s => ({ vid1: !s.vid1 })),
+      spot2ImgStyle: {
+        position: 'absolute', inset: 0, backgroundImage: `url(${spot2Photos[s2Idx]})`,
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      },
+      spot2Count: `${s2Idx + 1} / ${spot2Photos.length}`,
+      spot2Prev: () => this.setState(s => ({ spot2Idx: (s.spot2Idx || 0) - 1, vid2: false })),
+      spot2Next: () => this.setState(s => ({ spot2Idx: (s.spot2Idx || 0) + 1, vid2: false })),
+      vid2Open: !!this.state.vid2,
+      vid2Label: this.state.vid2 ? 'Back to Photos' : '\u25B6 Video Tour',
+      toggleVid2: () => this.setState(s => ({ vid2: !s.vid2 })),
+      modalPrevPhoto: () => this.setState(s => ({ modalPhotoIdx: (mIdx - 1 + mPhotos.length) % mPhotos.length, modalVid: false })),
+      modalNextPhoto: () => this.setState(s => ({ modalPhotoIdx: (mIdx + 1) % mPhotos.length, modalVid: false })),
+      modalHasVideo: !!(this.state.modal && this.state.modal.video),
+      modalVidOpen: !!this.state.modalVid,
+      modalVidLabel: this.state.modalVid ? 'Back to Photos' : '\u25B6 Video Tour',
+      modalVideoSrc: this.state.modal && this.state.modal.video ? `https://www.youtube.com/embed/${this.state.modal.video}` : '',
+      toggleModalVid: () => this.setState(s => ({ modalVid: !s.modalVid })),
+      openOffmarket: () => this.setState({ leadOpen: true, leadKind: 'buy', leadAddress: 'Private inventory — tell us your criteria', slideDismissed: true }),
+      modalHasPage: !!(this.state.modal && this.state.modal.href),
+      modalHref: (this.state.modal && this.state.modal.href) || '#',
+      modalHasPhotos: mPhotos.length > 1,
+      modalPhotos: mPhotos.map((p, i) => ({
+        onClick: () => this.setState({ modalPhotoIdx: i }),
+        style: {
+          width: '64px', height: '44px', padding: 0, cursor: 'pointer',
+          border: i === mIdx ? '2px solid #9DC3E0' : '2px solid transparent',
+          backgroundImage: `url(${p})`, backgroundSize: 'cover', backgroundPosition: 'center',
+          backgroundColor: '#24455F', flexShrink: 0
+        }
+      })),
+      modalImgStyle: {
+        minHeight: '320px', flex: 1, background: '#D3E2EE',
+        backgroundImage: this.state.modal ? `url(${mPhotos[mIdx] || this.state.modal.img})` : 'none',
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      },
+      quote: t.quote, who: t.who, dots,
+      prevTesti: () => { this.setState(s => ({ ti: (s.ti - 1 + this._testis.length) % this._testis.length })); this._startRotate(); },
+      nextTesti: () => { this.setState(s => ({ ti: (s.ti + 1) % this._testis.length })); this._startRotate(); },
+      modalOpen: !!this.state.modal,
+      modal: this.state.modal || {},
+      closeModal: () => this.setState({ modal: null }),
+      stopProp: (e) => e.stopPropagation(),
+      contactPending: !this.state.contactDone,
+      contactDone: this.state.contactDone,
+      onContact: (e) => { e.preventDefault(); this.setState({ contactDone: true }); },
+      onHeroVal: (e) => {
+        e.preventDefault();
+        const addr = e.target.querySelector('input').value;
+        e.target.reset();
+        this.setState({ leadOpen: true, leadKind: 'sell', leadAddress: addr });
+      },
+      onMarketReport: (e) => {
+        e.preventDefault();
+        e.target.reset();
+        this._showToast('You\u2019re on the list — the next market report arrives at the start of the month.');
+      },
+      onValuation: (e) => {
+        e.preventDefault();
+        const addr = e.target.querySelector('input').value;
+        e.target.reset();
+        this.setState({ leadOpen: true, leadKind: 'sell', leadAddress: addr });
+      },
+      onHeroBuy: (e) => {
+        e.preventDefault();
+        const crit = e.target.querySelector('input').value;
+        e.target.reset();
+        this.setState({ leadOpen: true, leadKind: 'buy', leadAddress: crit });
+      },
+      onBuyerBand: (e) => {
+        e.preventDefault();
+        const crit = e.target.querySelector('input').value;
+        e.target.reset();
+        this.setState({ leadOpen: true, leadKind: 'buy', leadAddress: crit });
+      },
+      isSelling: this.state.intent === 'sell',
+      isBuying: this.state.intent === 'buy',
+      setIntentSell: () => this.setState({ intent: 'sell' }),
+      setIntentBuy: () => this.setState({ intent: 'buy' }),
+      intentSellStyle: this.state.intent === 'sell' ? intentActive : intentBase,
+      intentBuyStyle: this.state.intent === 'buy' ? intentActive : intentBase,
+      leadOpen: this.state.leadOpen,
+      leadTitle: this.state.leadKind === 'buy' ? 'You\u2019re one step from private access.' : 'Your valuation is almost ready.',
+      leadIntro: this.state.leadKind === 'buy' ? 'Olof will personally curate off-market and coming-soon homes matching:' : 'Olof will personally prepare a report for:',
+      leadCta: this.state.leadKind === 'buy' ? 'Send Me Off-Market Homes' : 'Send My Free Report',
+      leadAddress: this.state.leadAddress || 'Your home address',
+      closeLead: () => this.setState({ leadOpen: false }),
+      openLeadBlank: () => this.setState({ leadOpen: true, leadKind: 'sell', leadAddress: 'Your home — tell us the address below', slideDismissed: true }),
+      onLeadSubmit: (e) => {
+        e.preventDefault();
+        const msg = this.state.leadKind === 'buy'
+          ? 'Welcome — your first private listing selection arrives within 24 hours.'
+          : 'Thank you — Olof will personally deliver your valuation within 24 hours.';
+        this.setState({ leadOpen: false, leadCaptured: true, slideDismissed: true });
+        this._showToast(msg);
+      },
+      slideVisible: this.state.slideShow && !this.state.slideDismissed && !this.state.leadCaptured && !this.state.leadOpen,
+      dismissSlide: () => this.setState({ slideDismissed: true }),
+      onNewsletter: (e) => { e.preventDefault(); e.target.reset(); this._showToast('Welcome — you have been added to the list.'); },
+      toastMsg: this.state.toast,
+      toastStyle: {
+        position: 'fixed', bottom: '32px', left: '50%', zIndex: 500,
+        transform: this.state.toast ? 'translate(-50%,0)' : 'translate(-50%,140px)',
+        background: '#0A141D', color: '#E7F0F7', padding: '18px 36px', fontSize: '13px',
+        letterSpacing: '.06em', fontFamily: "'Hanken Grotesk',sans-serif",
+        borderLeft: '2px solid #2E6591', transition: 'transform .5s ease'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

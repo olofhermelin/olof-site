@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Exclusive NYC Listings &amp; Home Search — Olof Hermelin | Douglas Elliman</title>
+<meta name="description" content="Search homes for sale and rent across Manhattan, Brooklyn, and Queens. Exclusive listings represented by Olof Hermelin, Licensed Real Estate Salesperson at Douglas Elliman.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;padding:0;background:#E7F0F7}
+  ::selection{background:#2E6591;color:#E7F0F7}
+  input::placeholder{color:#8095A6;text-transform:uppercase;font-size:10px;letter-spacing:.22em}
+</style>
+</helmet>
+
+<div style="font-family:'Hanken Grotesk',Helvetica,Arial,sans-serif;color:#0A141D;background:#E7F0F7;font-weight:400;line-height:1.65;min-height:100vh">
+
+  <!-- NAV -->
+  <div style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(10,20,29,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(231,240,247,.12)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:40px;padding:20px 4vw">
+      <a href="index.html" style="text-decoration:none;color:#E7F0F7;font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;line-height:1.2;white-space:nowrap;flex-shrink:0">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></a>
+      <div style="display:flex;gap:24px 28px;align-items:center;flex-wrap:wrap;justify-content:flex-end;white-space:nowrap">
+        <a href="listings.html" style="text-decoration:none;color:#FFFFFF;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;border-bottom:1px solid #9DC3E0;padding-bottom:3px">Properties</a>
+        <a href="index.html#neighborhoods" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Neighborhoods</a>
+        <a href="about.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">About</a>
+        <a href="valuation.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Valuation</a>
+        <a href="index.html#news" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Press</a>
+        <a href="index.html#insights" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Insights</a>
+        <a href="tel:2125550100" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(212) 555-0100</a>
+        <a href="index.html#contact" style="text-decoration:none;background:#E7F0F7;color:#0A141D;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:12px 24px;transition:all .3s" style-hover="background:#2E6591;color:#E7F0F7">Let's Connect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE HEADER -->
+  <div data-screen-label="Search Header" style="background:#0F2338;color:#E7F0F7;padding:150px 6vw 64px">
+    <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 18px;font-weight:600"><a href="index.html" style="color:#9DC3E0;text-decoration:none">Home</a> &nbsp;/&nbsp; <span style="color:rgba(231,240,247,.7)">Properties</span></p>
+    <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(38px,4.4vw,62px);margin:0;line-height:1.08">Find Your Home in New York</h1>
+    <p style="font-size:15px;color:rgba(231,240,247,.75);max-width:560px;margin:20px 0 0;line-height:1.7">Every exclusive listing, plus the full market across the five boroughs. Live RLS search arrives at launch via the RealPlus IDX feed — placeholder listings shown below.</p>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div data-screen-label="Filters" style="position:sticky;top:76px;z-index:150;background:#E7F0F7;border-bottom:1px solid rgba(22,35,46,.12);padding:20px 6vw;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+    <div style="display:flex;gap:0">
+      <sc-for list="{{ segs }}" as="s" hint-placeholder-count="4">
+        <button onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;flex:1">
+      <select onChange="{{ setHood }}" value="{{ hoodVal }}" aria-label="Neighborhood" style="border:1px solid rgba(22,35,46,.2);background:transparent;color:#415463;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:12px 14px;cursor:pointer;outline:none">
+        <sc-for list="{{ hoodOpts }}" as="o" hint-placeholder-count="6">
+          <option value="{{ o.value }}">{{ o.label }}</option>
+        </sc-for>
+      </select>
+      <sc-if value="{{ showPrice }}" hint-placeholder-val="{{ true }}">
+        <select onChange="{{ setPrice }}" value="{{ priceVal }}" aria-label="Price range" style="border:1px solid rgba(22,35,46,.2);background:transparent;color:#415463;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:12px 14px;cursor:pointer;outline:none">
+          <option value="all">Any Price</option>
+          <option value="u1">Under $1M</option>
+          <option value="1to3">$1M – $3M</option>
+          <option value="3to6">$3M – $6M</option>
+          <option value="6p">$6M +</option>
+        </select>
+      </sc-if>
+      <select onChange="{{ setBeds }}" value="{{ bedsVal }}" aria-label="Bedrooms" style="border:1px solid rgba(22,35,46,.2);background:transparent;color:#415463;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:12px 14px;cursor:pointer;outline:none">
+        <option value="all">Any Beds</option>
+        <option value="1">1+ Bed</option>
+        <option value="2">2+ Beds</option>
+        <option value="3">3+ Beds</option>
+        <option value="4">4+ Beds</option>
+      </select>
+      <select onChange="{{ setType }}" value="{{ typeVal }}" aria-label="Property type" style="border:1px solid rgba(22,35,46,.2);background:transparent;color:#415463;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:12px 14px;cursor:pointer;outline:none">
+        <option value="all">Any Type</option>
+        <option value="Condo">Condo</option>
+        <option value="Co-op">Co-op</option>
+        <option value="Townhouse">Townhouse</option>
+        <option value="Loft">Loft</option>
+      </select>
+      <select onChange="{{ setSort }}" value="{{ sortVal }}" aria-label="Sort" style="border:1px solid rgba(22,35,46,.2);background:transparent;color:#415463;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:500;padding:12px 14px;cursor:pointer;outline:none">
+        <option value="default">Sort: Newest</option>
+        <option value="priceAsc">Price: Low to High</option>
+        <option value="priceDesc">Price: High to Low</option>
+      </select>
+    </div>
+    <div style="display:flex;gap:0">
+      <button onClick="{{ setViewGrid }}" style="{{ viewGridStyle }}">Grid</button>
+      <button onClick="{{ setViewMap }}" style="{{ viewMapStyle }}">Map</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div data-screen-label="Results" style="padding:44px 6vw 90px">
+    <p style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#415463;margin:0 0 30px;font-weight:500">{{ resultCount }}</p>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="text-align:center;padding:80px 0">
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:26px;margin:0 0 10px">No properties match those filters.</p>
+        <p style="font-size:14px;color:#415463;margin:0 0 28px">The full market opens up when the live RLS search launches. Meanwhile —</p>
+        <button onClick="{{ clearFilters }}" style="background:#0A141D;border:none;color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:16px 36px;cursor:pointer;transition:background .3s" style-hover="background:#2E6591">Clear All Filters</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isGrid }}" hint-placeholder-val="{{ true }}">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px 28px">
+        <sc-for list="{{ listings }}" as="l" hint-placeholder-count="6">
+          <div onClick="{{ l.onClick }}" style="cursor:pointer">
+            <div style="position:relative;overflow:hidden;aspect-ratio:4/5;background:#D3E2EE">
+              <div role="img" aria-label="{{ l.addr }}" style="{{ l.imgStyle }}" style-hover="transform:scale(1.05)"></div>
+              <span style="{{ l.tagStyle }}">{{ l.tag }}</span>
+            </div>
+            <div style="padding-top:20px">
+              <p style="font-family:'Newsreader',Georgia,serif;font-size:24px;margin:0">{{ l.price }}</p>
+              <p style="font-size:14px;letter-spacing:.04em;margin:4px 0 0;color:#0A141D">{{ l.addr }}</p>
+              <p style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:8px 0 0">{{ l.meta }}</p>
+              <p style="font-size:10px;color:#8095A6;margin:8px 0 0;letter-spacing:.03em">{{ l.courtesy }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isMap }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1fr 1.1fr;gap:28px;align-items:start">
+        <div style="display:grid;gap:18px">
+          <sc-for list="{{ listings }}" as="l" hint-placeholder-count="5">
+            <div onClick="{{ l.onSelect }}" style="{{ l.rowStyle }}">
+              <div style="position:relative;overflow:hidden;width:150px;aspect-ratio:4/3;background:#D3E2EE;flex-shrink:0">
+                <div role="img" aria-label="{{ l.addr }}" style="{{ l.imgStyle }}"></div>
+              </div>
+              <div style="flex:1;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:baseline;gap:14px">
+                  <p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">{{ l.price }}</p>
+                  <p style="font-size:9px;letter-spacing:.22em;text-transform:uppercase;color:#2E6591;margin:0;font-weight:600;white-space:nowrap">{{ l.tag }}</p>
+                </div>
+                <p style="font-size:13px;letter-spacing:.03em;margin:4px 0 0;color:#0A141D">{{ l.addr }}</p>
+                <p style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#415463;margin:6px 0 10px">{{ l.meta }}</p>
+                <button onClick="{{ l.onQuickView }}" style="background:none;border:none;padding:0;color:#0A141D;font-family:'Hanken Grotesk',sans-serif;font-size:10px;letter-spacing:.22em;text-transform:uppercase;font-weight:600;border-bottom:1px solid #2E6591;padding-bottom:3px;cursor:pointer;transition:color .3s" style-hover="color:#2E6591">Quick View</button>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="position:sticky;top:170px">
+          <div style="border:1px solid rgba(22,35,46,.16);background:#FFFFFF">
+            <iframe src="{{ mapSrc }}" title="Listing location map" style="width:100%;height:calc(100vh - 300px);min-height:420px;border:none;display:block"></iframe>
+          </div>
+          <p style="font-size:11px;color:#8095A6;margin:12px 0 0;letter-spacing:.03em">Showing: <span style="color:#0A141D">{{ mapLabel }}</span> — select a property to move the map. Full interactive IDX map search launches with the RealPlus feed.</p>
+        </div>
+      </div>
+    </sc-if>
+
+    <p style="font-size:11px;color:#8095A6;margin:54px 0 0;letter-spacing:.03em">All property information shown is placeholder content for demonstration purposes. Live listing data will be provided via the REBNY RLS / RealPlus IDX feed upon launch.</p>
+  </div>
+
+  <!-- SAVED SEARCH BAND -->
+  <div data-screen-label="Saved Search" style="background:#163049;color:#E7F0F7;display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;padding:64px 6vw">
+    <div>
+      <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#9DC3E0;margin:0 0 12px;font-weight:600">Saved Search &amp; Alerts</p>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(26px,2.4vw,36px);margin:0 0 12px;line-height:1.2">Be first to every new listing.</h2>
+      <p style="font-size:14px;color:#B9CCDB;margin:0;line-height:1.7;max-width:520px">Tell us what you're looking for and get matching homes the moment they hit the market — including coming-soon and off-market properties that never reach the portals.</p>
+    </div>
+    <form onSubmit="{{ onAlert }}" style="display:flex;background:#E7F0F7">
+      <input type="email" placeholder="Email address" required="required" aria-label="Email for listing alerts" style="flex:1;border:none;outline:none;padding:17px 20px;font-family:'Hanken Grotesk',sans-serif;font-size:14px;background:transparent;color:#0A141D;min-width:0"></input>
+      <button type="submit" style="background:#0A141D;border:none;color:#E7F0F7;padding:0 26px;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;cursor:pointer;white-space:nowrap;transition:background .3s" style-hover="background:#2E6591">Create My Alert</button>
+    </form>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#0F2338;color:#E7F0F7;padding:64px 6vw 36px">
+    <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(231,240,247,.12)">
+      <div>
+        <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
+        <p style="font-size:13px;opacity:.65;margin:16px 0 0;line-height:1.9">Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (212) 555-0100 &nbsp;|&nbsp; olof@olofsellsnyc.com</p>
+      </div>
+      <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
+        <a href="index.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home</a>
+        <a href="listings.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Properties</a>
+        <a href="about.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">About</a>
+        <a href="valuation.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Valuation</a>
+        <a href="index.html#contact" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Contact</a>
+        <div style="display:flex;align-items:center;gap:10px;opacity:.55">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9h13v-9"></path><path d="M12 8.2 8.5 11h7z" fill="currentColor" stroke="none"></path><path d="M9.8 13h4.4M9.8 15.5h4.4"></path></svg>
+          <p style="font-size:10px;letter-spacing:.08em;margin:0">Equal Housing Opportunity</p>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:10px;line-height:1.9;opacity:.42;margin-top:30px;letter-spacing:.03em">
+      <p style="margin:0 0 12px">&copy; 2026 Olof Hermelin. All rights reserved. Olof Hermelin is a licensed real estate salesperson affiliated with Douglas Elliman Real Estate, a licensed real estate broker in New York (license # 10991211812). Olof Hermelin fully supports the principles of the Fair Housing Act and the Equal Opportunity Act.</p>
+      <p style="margin:0">Listing information for certain New York City properties will be provided courtesy of the Real Estate Board of New York's Residential Listing Service (the "RLS") upon launch. The listing information provided is for the consumer's personal, non-commercial use. All property content on this page is placeholder material for design demonstration purposes.</p>
+    </div>
+  </div>
+
+  <!-- QUICK VIEW MODAL -->
+  <sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeModal }}" style="position:fixed;inset:0;z-index:400;background:rgba(12,28,42,.85);display:flex;align-items:center;justify-content:center;padding:4vw">
+      <div onClick="{{ stopProp }}" style="background:#E7F0F7;max-width:880px;width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:1.2fr 1fr">
+        <div style="display:flex;flex-direction:column;min-height:320px">
+          <div style="position:relative;flex:1;display:flex">
+            <div role="img" aria-label="{{ modal.addr }}" style="{{ modalImgStyle }}"></div>
+            <sc-if value="{{ modalHasPhotos }}" hint-placeholder-val="{{ false }}">
+              <button onClick="{{ modalPrevPhoto }}" aria-label="Previous photo" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:16px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&larr;</button>
+              <button onClick="{{ modalNextPhoto }}" aria-label="Next photo" style="position:absolute;right:12px;top:50%;transform:translateY(-50%);z-index:3;width:42px;height:42px;border-radius:50%;border:none;background:rgba(10,20,29,.55);color:#E7F0F7;font-size:16px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">&rarr;</button>
+            </sc-if>
+          </div>
+        </div>
+        <div style="padding:42px">
+          <p style="font-size:10px;letter-spacing:.28em;text-transform:uppercase;color:#2E6591;margin:0 0 6px;font-weight:500">{{ modal.tag }}</p>
+          <p style="font-family:'Newsreader',Georgia,serif;font-size:32px;margin:0 0 6px">{{ modal.price }}</p>
+          <p style="font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#415463;margin:0 0 22px">{{ modal.addr }} — {{ modal.meta }}</p>
+          <p style="font-size:14px;color:#243646;margin:0 0 28px;line-height:1.7">{{ modal.desc }}</p>
+          <div style="display:flex;gap:14px;flex-wrap:wrap">
+            <sc-if value="{{ modalHasPage }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ modalHref }}" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:16px 32px;transition:background .3s" style-hover="background:#2E6591">View Full Listing</a>
+            </sc-if>
+            <a href="index.html#contact" style="display:inline-block;text-decoration:none;border:1px solid #0A141D;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:15px 32px;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7">Inquire</a>
+          </div>
+        </div>
+      </div>
+      <button onClick="{{ closeModal }}" aria-label="Close" style="position:fixed;top:22px;right:28px;background:none;border:none;color:#E7F0F7;font-size:34px;cursor:pointer;line-height:1">&times;</button>
+    </div>
+  </sc-if>
+
+  <!-- TOAST -->
+  <div style="{{ toastStyle }}">{{ toastMsg }}</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultSegment&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;sale&quot;,&quot;options&quot;:[&quot;sale&quot;,&quot;rent&quot;,&quot;contract&quot;,&quot;sold&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Search&quot;},&quot;defaultView&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;grid&quot;,&quot;options&quot;:[&quot;grid&quot;,&quot;map&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Search&quot;}}">
+class Component extends DCLogic {
+  state = { seg: null, hood: 'all', price: 'all', beds: 'all', type: 'all', sort: 'default', view: null, sel: 0, modal: null, modalPhotoIdx: 0, toast: '' };
+
+  componentDidMount() {
+    this._esc = (e) => { if (e.key === 'Escape') this.setState({ modal: null }); };
+    window.addEventListener('keydown', this._esc);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this._esc);
+    clearTimeout(this._toastT);
+  }
+  _showToast(msg) {
+    clearTimeout(this._toastT);
+    this.setState({ toast: msg });
+    this._toastT = setTimeout(() => this.setState({ toast: '' }), 3800);
+  }
+
+  _all = [
+    { status: 'sale', tag: 'New Listing', type: 'Condo', beds: 1, priceN: 599000, hood: 'Prospect Lefferts Gardens', lat: 40.6480, lon: -73.9571, href: '2100-bedford-avenue-2f.html',
+      img: 'https://photos.zillowstatic.com/fp/092aeb059b23901fa21c48a080a81953-full.webp',
+      photos: ['https://photos.zillowstatic.com/fp/092aeb059b23901fa21c48a080a81953-full.webp','https://photos.zillowstatic.com/fp/21a485535e6648e6a0e19cfe0c136f41-full.webp','https://photos.zillowstatic.com/fp/f1cc95be8f00800c0f81589db3729c1f-full.webp','https://photos.zillowstatic.com/fp/1463fb8d78847d93fca9823d474aa4de-full.webp','https://photos.zillowstatic.com/fp/68ef7a90f1ed2427e12f0afd225dcd96-full.webp'],
+      price: '$599,000', addr: '2100 Bedford Avenue, 2F — Prospect Lefferts Gardens', meta: '1 BD · 1 BA · 643 Sq.Ft. · Condo', courtesy: 'Listing Courtesy of Olof Hermelin, Douglas Elliman', desc: 'A contemporary one-bedroom condominium at the crossroads of Prospect Lefferts Gardens, Flatbush, and Prospect Park South. Floor-to-ceiling windows, open kitchen with breakfast island and custom walnut cabinetry, and a spa-style bath — plus deeded storage and in-unit washer/dryer. A 421a tax abatement through 2034 keeps carrying costs remarkably low.' },
+    { status: 'rent', tag: 'For Rent', type: 'Condo', beds: 1, priceN: 5200, hood: 'Lincoln Square', lat: 40.7737, lon: -73.9890,
+      img: 'https://photos.zillowstatic.com/fp/1ccb5610d96cd3366376b5fd08dc4c47-full.webp',
+      photos: ['https://photos.zillowstatic.com/fp/1ccb5610d96cd3366376b5fd08dc4c47-full.webp','https://photos.zillowstatic.com/fp/697fec392492d862bf1cc4df567a6c9f-full.webp','https://photos.zillowstatic.com/fp/f94b7a8811daca069f60b2923d4c5cbd-full.webp','https://photos.zillowstatic.com/fp/1559d099878103da41b71e41e2643828-full.webp'],
+      price: '$5,200 / month', addr: '120 Riverside Boulevard, 10P — Lincoln Square', meta: '1 BD · 1 BA · 721 Sq.Ft. · Available Aug 1', courtesy: 'Listing Courtesy of Olof Hermelin, Douglas Elliman', desc: 'A gracious one-bedroom in a white-glove Riverside Boulevard condominium. Entry foyer, eastern light, custom walk-in closet, marble bath, and in-unit washer/dryer, with 12,000 square feet of amenities below — indoor pool, fitness center, steam and sauna — plus a rooftop deck with Hudson River views.' },
+    { status: 'sale', tag: 'For Sale', type: 'Loft', beds: 4, priceN: 8950000, hood: 'Tribeca', lat: 40.7195, lon: -74.0089, img: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=80', price: '$8,950,000', addr: '120 Hudson Street, PH-A — Tribeca', meta: '4 BD · 4.5 BA · 4,200 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "A full-floor penthouse atop one of Tribeca's most coveted lofts. Keyed elevator entry, 11-foot ceilings, chef's kitchen, and a 1,200 sq.ft. private terrace with open Hudson views." },
+    { status: 'sale', tag: 'For Sale', type: 'Townhouse', beds: 6, priceN: 12500000, hood: 'Upper East Side', lat: 40.7735, lon: -73.9645, img: 'https://images.unsplash.com/photo-1502005097973-6a7082348e28?auto=format&fit=crop&w=900&q=80', price: '$12,500,000', addr: '14 East 74th Street — Upper East Side', meta: '6 BD · 5 BA · 6,800 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'A 20-foot-wide limestone townhouse one block from Central Park. Six stories, elevator, landscaped garden, and a wood-paneled library. A rare offering on a premier UES block.' },
+    { status: 'sale', tag: 'New Listing', type: 'Townhouse', beds: 5, priceN: 5275000, hood: 'Brooklyn Heights', lat: 40.6942, lon: -73.9950, img: 'https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=900&q=80', price: '$5,275,000', addr: '86 Remsen Street — Brooklyn Heights', meta: '5 BD · 3.5 BA · 4,500 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "An impeccably restored Greek Revival brownstone on one of Brooklyn Heights' most storied streets. Original detail throughout, plus a chef's kitchen opening to a south-facing garden." },
+    { status: 'sale', tag: 'For Sale', type: 'Condo', beds: 3, priceN: 3850000, hood: 'West Village', lat: 40.7352, lon: -74.0021, img: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80', price: '$3,850,000', addr: '45 Charles Street, 8C — West Village', meta: '3 BD · 2.5 BA · 2,100 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Corner three-bedroom in a boutique West Village condominium. Oversized casement windows, white oak floors, and a windowed eat-in kitchen. Full-service building with gym and roof deck.' },
+    { status: 'sale', tag: 'Pocket Listing', type: 'Co-op', beds: 1, priceN: 2395000, hood: 'Sutton Place', lat: 40.7570, lon: -73.9614, img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80', price: '$2,395,000', addr: 'Sutton Place — Address Upon Request', meta: '1 BD · 2 BA · Wraparound Terrace', courtesy: 'Offered Exclusively by Olof Hermelin', desc: "Terrace lover's dream with stunning city and river views. Offered privately and never publicly listed — contact us directly for details and access." },
+    { status: 'sale', tag: 'New Listing', type: 'Condo', beds: 2, priceN: 1995000, hood: 'Long Island City', lat: 40.7470, lon: -73.9487, img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=900&q=80', price: '$1,995,000', addr: '22-44 Jackson Avenue, 30F — Long Island City', meta: '2 BD · 2 BA · 1,350 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: "High-floor two-bedroom in LIC's premier waterfront tower. Floor-to-ceiling glass with direct skyline views, private balcony, and 30,000 sq.ft. of amenities." },
+    { status: 'contract', tag: 'In Contract', type: 'Loft', beds: 3, priceN: 2650000, hood: 'Williamsburg', lat: 40.7182, lon: -73.9633, img: 'https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=900&q=80', price: '$2,650,000', addr: '175 Kent Avenue, 5B — Williamsburg', meta: '3 BD · 2 BA · 1,900 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Authentic loft living on the Williamsburg waterfront. Exposed brick, 14-foot beamed ceilings, and a wall of factory windows facing the Manhattan skyline.' },
+    { status: 'contract', tag: 'In Contract', type: 'Co-op', beds: 3, priceN: 2395000, hood: 'Upper West Side', lat: 40.7896, lon: -73.9820, img: 'https://images.unsplash.com/photo-1560448075-bb485b067938?auto=format&fit=crop&w=900&q=80', price: '$2,395,000', addr: '160 Riverside Drive, 11D — Upper West Side', meta: '3 BD · 2 BA · 1,800 Sq.Ft.', courtesy: 'Listing Courtesy of Olof Hermelin', desc: 'Classic six in a white-glove prewar co-op on Riverside Drive. Formal dining room, staff room, and protected river views. In contract after one week on market.' },
+    { status: 'sold', tag: 'Sold', type: 'Condo', beds: 4, priceN: 7400000, hood: 'Flatiron', lat: 40.7431, lon: -73.9874, img: 'https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&w=900&q=80', price: '$7,400,000', addr: '21 East 26th Street, PH — Flatiron', meta: '4 BD · 4 BA · 3,600 Sq.Ft.', courtesy: 'Represented the Seller', desc: 'Record-setting sale for the building. Duplex penthouse with double-height great room and wraparound terrace overlooking Madison Square Park. Sold over asking in a competitive bidding process.' },
+    { status: 'sold', tag: 'Sold', type: 'Loft', beds: 3, priceN: 4900000, hood: 'SoHo', lat: 40.7248, lon: -73.9979, img: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80', price: '$4,900,000', addr: '158 Mercer Street, 4A — SoHo', meta: '3 BD · 3 BA · 2,700 Sq.Ft.', courtesy: 'Represented the Seller', desc: 'Mint-condition three-bedroom at a coveted SoHo address. Represented the seller; closed at 104% of asking price after 9 days on market.' },
+    { status: 'sold', tag: 'Sold', type: 'Condo', beds: 2, priceN: 1875000, hood: 'Cobble Hill', lat: 40.6884, lon: -73.9967, img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=900&q=80', price: '$1,875,000', addr: '110 Amity Street, 3B — Cobble Hill', meta: '2 BD · 2 BA · 1,200 Sq.Ft.', courtesy: 'Represented the Buyer', desc: 'Turnkey two-bedroom condo in prime Cobble Hill. Represented the buyer; negotiated 6% below asking in a multiple-offer environment.' }
+  ];
+
+  renderVals() {
+    const seg = this.state.seg ?? (this.props.defaultSegment ?? 'sale');
+    const view = this.state.view ?? (this.props.defaultView ?? 'grid');
+
+    const segDefs = [
+      { key: 'sale', label: 'For Sale' },
+      { key: 'rent', label: 'For Rent' },
+      { key: 'contract', label: 'In Contract' },
+      { key: 'sold', label: 'Sold' }
+    ];
+    const segBase = {
+      fontFamily: "'Hanken Grotesk',sans-serif", fontSize: '11px', letterSpacing: '.18em',
+      textTransform: 'uppercase', fontWeight: 500, padding: '12px 20px', cursor: 'pointer',
+      border: '1px solid rgba(22,35,46,.2)', borderRight: 'none', background: 'transparent', color: '#415463', transition: 'all .3s'
+    };
+    const segs = segDefs.map((s, i) => ({
+      label: s.label,
+      style: {
+        ...segBase,
+        ...(i === segDefs.length - 1 ? { borderRight: '1px solid rgba(22,35,46,.2)' } : {}),
+        ...(s.key === seg ? { background: '#0A141D', color: '#E7F0F7', borderColor: '#0A141D' } : {})
+      },
+      onClick: () => this.setState({ seg: s.key, sel: 0 })
+    }));
+
+    const inSeg = this._all.filter(l => l.status === seg);
+    const hoods = [...new Set(inSeg.map(l => l.hood))].sort();
+    const hoodOpts = [{ value: 'all', label: 'All Neighborhoods' }, ...hoods.map(h => ({ value: h, label: h }))];
+
+    const priceBucket = (n) => n < 1000000 ? 'u1' : n < 3000000 ? '1to3' : n < 6000000 ? '3to6' : '6p';
+    let filtered = inSeg.filter(l =>
+      (this.state.hood === 'all' || l.hood === this.state.hood) &&
+      (seg !== 'sale' || this.state.price === 'all' || priceBucket(l.priceN) === this.state.price) &&
+      (this.state.beds === 'all' || l.beds >= parseInt(this.state.beds, 10)) &&
+      (this.state.type === 'all' || l.type === this.state.type)
+    );
+    if (this.state.sort === 'priceAsc') filtered = [...filtered].sort((a, b) => a.priceN - b.priceN);
+    if (this.state.sort === 'priceDesc') filtered = [...filtered].sort((a, b) => b.priceN - a.priceN);
+
+    const selIdx = Math.min(this.state.sel, Math.max(filtered.length - 1, 0));
+    const selL = filtered[selIdx];
+
+    const tagBase = {
+      position: 'absolute', top: '14px', left: '14px', zIndex: 2, fontSize: '9px',
+      letterSpacing: '.24em', textTransform: 'uppercase', fontWeight: 600, padding: '8px 14px',
+      fontFamily: "'Hanken Grotesk',sans-serif"
+    };
+    const tagStyles = {
+      'Sold': { ...tagBase, background: '#2E6591', color: '#E7F0F7' },
+      'Pocket Listing': { ...tagBase, background: '#E7F0F7', color: '#0A141D' }
+    };
+
+    const listings = filtered.map((l, i) => ({
+      ...l,
+      imgStyle: {
+        width: '100%', height: '100%', backgroundImage: `url(${l.img})`,
+        backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform .8s ease'
+      },
+      tagStyle: tagStyles[l.tag] || { ...tagBase, background: 'rgba(22,35,46,.9)', color: '#E7F0F7' },
+      rowStyle: {
+        display: 'flex', gap: '20px', padding: '16px', cursor: 'pointer', transition: 'all .3s',
+        background: i === selIdx && view === 'map' ? '#FFFFFF' : 'transparent',
+        border: i === selIdx && view === 'map' ? '1px solid rgba(46,101,145,.45)' : '1px solid rgba(22,35,46,.12)'
+      },
+      onClick: () => this.setState({ modal: l, modalPhotoIdx: 0 }),
+      onSelect: () => this.setState({ sel: i }),
+      onQuickView: (e) => { e.stopPropagation(); this.setState({ modal: l, modalPhotoIdx: 0, sel: i }); }
+    }));
+
+    const mapSrc = selL
+      ? `https://www.openstreetmap.org/export/embed.html?bbox=${(selL.lon - 0.012).toFixed(4)}%2C${(selL.lat - 0.008).toFixed(4)}%2C${(selL.lon + 0.012).toFixed(4)}%2C${(selL.lat + 0.008).toFixed(4)}&layer=mapnik&marker=${selL.lat}%2C${selL.lon}`
+      : 'https://www.openstreetmap.org/export/embed.html?bbox=-74.06%2C40.66%2C-73.90%2C40.80&layer=mapnik';
+
+    const mPhotos = (this.state.modal && this.state.modal.photos) || (this.state.modal ? [this.state.modal.img] : []);
+    const mIdx = Math.min(this.state.modalPhotoIdx || 0, Math.max(mPhotos.length - 1, 0));
+
+    const viewBase = {
+      fontFamily: "'Hanken Grotesk',sans-serif", fontSize: '11px', letterSpacing: '.18em',
+      textTransform: 'uppercase', fontWeight: 500, padding: '12px 20px', cursor: 'pointer',
+      border: '1px solid rgba(22,35,46,.2)', background: 'transparent', color: '#415463', transition: 'all .3s'
+    };
+    const viewActive = { ...viewBase, background: '#2E6591', color: '#E7F0F7', borderColor: '#2E6591' };
+
+    return {
+      segs, listings, hoodOpts,
+      hoodVal: this.state.hood, priceVal: this.state.price, bedsVal: this.state.beds,
+      typeVal: this.state.type, sortVal: this.state.sort,
+      setHood: (e) => this.setState({ hood: e.target.value, sel: 0 }),
+      setPrice: (e) => this.setState({ price: e.target.value, sel: 0 }),
+      setBeds: (e) => this.setState({ beds: e.target.value, sel: 0 }),
+      setType: (e) => this.setState({ type: e.target.value, sel: 0 }),
+      setSort: (e) => this.setState({ sort: e.target.value }),
+      showPrice: seg === 'sale',
+      clearFilters: () => this.setState({ hood: 'all', price: 'all', beds: 'all', type: 'all', sel: 0 }),
+      resultCount: `${filtered.length} ${filtered.length === 1 ? 'Property' : 'Properties'}${this.state.hood !== 'all' ? ' — ' + this.state.hood : ''}`,
+      isEmpty: filtered.length === 0,
+      isGrid: view === 'grid' && filtered.length > 0,
+      isMap: view === 'map' && filtered.length > 0,
+      setViewGrid: () => this.setState({ view: 'grid' }),
+      setViewMap: () => this.setState({ view: 'map' }),
+      viewGridStyle: view === 'grid' ? { ...viewActive, borderRight: 'none' } : { ...viewBase, borderRight: 'none' },
+      viewMapStyle: view === 'map' ? viewActive : viewBase,
+      mapSrc,
+      mapLabel: selL ? selL.addr : 'New York City',
+      modalOpen: !!this.state.modal,
+      modal: this.state.modal || {},
+      modalHasPhotos: mPhotos.length > 1,
+      modalHasPage: !!(this.state.modal && this.state.modal.href),
+      modalHref: (this.state.modal && this.state.modal.href) || '#',
+      modalImgStyle: {
+        minHeight: '320px', flex: 1, background: '#D3E2EE',
+        backgroundImage: this.state.modal ? `url(${mPhotos[mIdx] || this.state.modal.img})` : 'none',
+        backgroundSize: 'cover', backgroundPosition: 'center'
+      },
+      modalPrevPhoto: () => this.setState({ modalPhotoIdx: (mIdx - 1 + mPhotos.length) % mPhotos.length }),
+      modalNextPhoto: () => this.setState({ modalPhotoIdx: (mIdx + 1) % mPhotos.length }),
+      closeModal: () => this.setState({ modal: null }),
+      stopProp: (e) => e.stopPropagation(),
+      onAlert: (e) => { e.preventDefault(); e.target.reset(); this._showToast('Alert created — matching homes will arrive the moment they list.'); },
+      toastMsg: this.state.toast,
+      toastStyle: {
+        position: 'fixed', bottom: '32px', left: '50%', zIndex: 500,
+        transform: this.state.toast ? 'translate(-50%,0)' : 'translate(-50%,140px)',
+        background: '#0A141D', color: '#E7F0F7', padding: '18px 36px', fontSize: '13px',
+        letterSpacing: '.06em', fontFamily: "'Hanken Grotesk',sans-serif",
+        borderLeft: '2px solid #2E6591', transition: 'transform .5s ease'
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
