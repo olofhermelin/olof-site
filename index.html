@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet>
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -33,9 +34,10 @@
         <a href="#neighborhoods" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Neighborhoods</a>
         <a href="about.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">About</a>
         <a href="valuation.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Valuation</a>
+        <a href="videos.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Videos</a>
         <a href="#news" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Press</a>
         <a href="#insights" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Insights</a>
-        <a href="tel:2125550100" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(212) 555-0100</a>
+        <a href="tel:9175537447" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(917) 553-7447</a>
         <a href="#contact" style="text-decoration:none;background:#E7F0F7;color:#0A141D;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:12px 24px;transition:all .3s" style-hover="background:#2E6591;color:#E7F0F7">Let's Connect</a>
       </div>
     </div>
@@ -102,7 +104,7 @@
       <p style="position:absolute;right:28px;bottom:20px;z-index:3;margin:0;color:#E7F0F7;background:rgba(10,20,29,.55);font-size:11px;letter-spacing:.18em;padding:8px 14px">{{ spotCount }}</p>
       <button onClick="{{ toggleVid1 }}" style="position:absolute;left:28px;bottom:20px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.55);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 22px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">{{ vid1Label }}</button>
       <sc-if value="{{ vid1Open }}" hint-placeholder-val="{{ false }}">
-        <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw" title="2100 Bedford Avenue 2F video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+        <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw" title="2100 Bedford Avenue 2F video tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
       </sc-if>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:36px 6vw 0">
@@ -138,7 +140,7 @@
       <p style="position:absolute;right:28px;bottom:20px;z-index:3;margin:0;color:#E7F0F7;background:rgba(10,20,29,.55);font-size:11px;letter-spacing:.18em;padding:8px 14px">{{ spot2Count }}</p>
       <button onClick="{{ toggleVid2 }}" style="position:absolute;left:28px;bottom:20px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.55);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 22px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">{{ vid2Label }}</button>
       <sc-if value="{{ vid2Open }}" hint-placeholder-val="{{ false }}">
-        <iframe src="https://www.youtube.com/embed/SYzEOrjawQg" title="120 Riverside Boulevard 10P video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+        <iframe src="https://www.youtube.com/embed/SYzEOrjawQg" title="120 Riverside Boulevard 10P video tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
       </sc-if>
     </div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding:36px 6vw 0">
@@ -388,6 +390,58 @@
     </div>
   </div>
 
+  <!-- VIDEOS -->
+  <div id="videos" data-screen-label="Videos" style="background:#163049;color:#E7F0F7;padding:110px 6vw">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px">
+      <div>
+        <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 14px;font-weight:500">On Camera</p>
+        <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0">Olof on Video</h2>
+        <p style="font-size:15px;color:rgba(231,240,247,.7);margin:16px 0 0;max-width:520px;line-height:1.7">Property films, neighborhood walks, and straight talk on the New York market.</p>
+      </div>
+      <a href="videos.html" style="text-decoration:none;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;border-bottom:1px solid #9DC3E0;padding-bottom:6px;transition:color .3s" style-hover="color:#9DC3E0">View All Videos</a>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px">
+      <div style="background:#0F2338;border:1px solid rgba(231,240,247,.1)">
+        <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#0A141D">
+          <sc-if value="{{ yt1Closed }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ playYt1 }}" role="button" aria-label="Play: 2100 Bedford Avenue 2F film" style="position:absolute;inset:0;cursor:pointer">
+              <img src="https://i.ytimg.com/vi/-9ZvNcXj3xw/maxresdefault.jpg" alt="2100 Bedford Avenue 2F video still" style="width:100%;height:100%;object-fit:cover;display:block"></img>
+              <div style="position:absolute;inset:0;background:rgba(10,20,29,.25);display:flex;align-items:center;justify-content:center;transition:background .3s" style-hover="background:rgba(10,20,29,.05)">
+                <div style="width:72px;height:72px;border-radius:50%;background:rgba(10,20,29,.7);border:1px solid rgba(231,240,247,.5);display:flex;align-items:center;justify-content:center;color:#E7F0F7;font-size:18px;padding-left:5px">▶</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ yt1Open }}" hint-placeholder-val="{{ false }}">
+            <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw?autoplay=1" title="2100 Bedford Avenue 2F film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
+          </sc-if>
+        </div>
+        <div style="padding:24px 28px 28px">
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9DC3E0;margin:0 0 10px;font-weight:500">Listing Film</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.3">Inside 2100 Bedford Avenue, 2F</h3>
+        </div>
+      </div>
+      <div style="background:#0F2338;border:1px solid rgba(231,240,247,.1)">
+        <div style="position:relative;aspect-ratio:16/9;overflow:hidden;background:#0A141D">
+          <sc-if value="{{ yt2Closed }}" hint-placeholder-val="{{ true }}">
+            <div onClick="{{ playYt2 }}" role="button" aria-label="Play: 120 Riverside Boulevard 10P film" style="position:absolute;inset:0;cursor:pointer">
+              <img src="https://i.ytimg.com/vi/SYzEOrjawQg/hqdefault.jpg" alt="120 Riverside Boulevard 10P video still" style="width:100%;height:100%;object-fit:cover;display:block"></img>
+              <div style="position:absolute;inset:0;background:rgba(10,20,29,.25);display:flex;align-items:center;justify-content:center;transition:background .3s" style-hover="background:rgba(10,20,29,.05)">
+                <div style="width:72px;height:72px;border-radius:50%;background:rgba(10,20,29,.7);border:1px solid rgba(231,240,247,.5);display:flex;align-items:center;justify-content:center;color:#E7F0F7;font-size:18px;padding-left:5px">▶</div>
+              </div>
+            </div>
+          </sc-if>
+          <sc-if value="{{ yt2Open }}" hint-placeholder-val="{{ false }}">
+            <iframe src="https://www.youtube.com/embed/SYzEOrjawQg?autoplay=1" title="120 Riverside Boulevard 10P film" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none"></iframe>
+          </sc-if>
+        </div>
+        <div style="padding:24px 28px 28px">
+          <p style="font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#9DC3E0;margin:0 0 10px;font-weight:500">Listing Film</p>
+          <h3 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:22px;margin:0;line-height:1.3">120 Riverside Boulevard, 10P</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- INSIGHTS -->
   <div id="insights" data-screen-label="Insights" style="padding:0 6vw 110px">
     <div style="text-align:center">
@@ -455,9 +509,9 @@
       <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 16px;font-weight:500">Get In Touch</p>
       <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(34px,3.4vw,50px);margin:0;line-height:1.15">Let's Find Your Place in the City</h2>
       <div style="margin-top:40px;display:grid;gap:24px">
-        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Mobile</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(212) 555-0100</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Mobile</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(917) 553-7447</p></div>
         <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Office</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(212) 891-7000</p></div>
-        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Email</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">olof@olofsellsnyc.com</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Email</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">ohermelin@elliman.com</p></div>
         <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Office</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">Douglas Elliman — 575 Madison Avenue, New York, NY 10022</p></div>
       </div>
     </div>
@@ -504,9 +558,9 @@
     <div style="display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:56px;padding-bottom:56px;border-bottom:1px solid rgba(231,240,247,.12)">
       <div>
         <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
-        <p style="font-size:13px;opacity:.65;margin:20px 0 0;line-height:1.9">Licensed as Olof Hermelin<br></br>Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (212) 555-0100 &nbsp;|&nbsp; o: (212) 891-7000<br></br>olof@olofsellsnyc.com</p>
+        <p style="font-size:13px;opacity:.65;margin:20px 0 0;line-height:1.9">Licensed as Olof Hermelin<br></br>Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (917) 553-7447 &nbsp;|&nbsp; o: (212) 891-7000<br></br>ohermelin@elliman.com</p>
         <div style="display:flex;gap:14px;margin-top:28px">
-          <a href="#" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IG</a>
+          <a href="https://www.instagram.com/olofsellsnyc/" target="_blank" rel="noopener" aria-label="Instagram" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IG</a>
           <a href="#" aria-label="Facebook" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">FB</a>
           <a href="#" aria-label="LinkedIn" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IN</a>
           <a href="https://www.youtube.com/@olofsellsnyc" target="_blank" rel="noopener" aria-label="YouTube — olofsellsnyc" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">YT</a>
@@ -530,6 +584,7 @@
           <a href="valuation.html" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home Valuation</a>
           <a href="#insights" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Real Estate Insights</a>
           <a href="#offmarket" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Off-Market Access</a>
+          <a href="videos.html" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Olof on Video</a>
           <a href="#contact" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Seller's Guide</a>
           <a href="#testimonials" style="font-size:13px;color:#E7F0F7;opacity:.65;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Testimonials</a>
         </div>
@@ -564,7 +619,7 @@
           <div style="position:relative;flex:1;display:flex">
             <div role="img" aria-label="{{ modal.addr }}" style="{{ modalImgStyle }}"></div>
             <sc-if value="{{ modalVidOpen }}" hint-placeholder-val="{{ false }}">
-              <iframe src="{{ modalVideoSrc }}" title="Property video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+              <iframe src="{{ modalVideoSrc }}" title="Property video tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
             </sc-if>
             <sc-if value="{{ modalHasVideo }}" hint-placeholder-val="{{ false }}">
               <button onClick="{{ toggleModalVid }}" style="position:absolute;left:12px;bottom:12px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.6);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:10px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;padding:10px 16px;cursor:pointer">{{ modalVidLabel }}</button>
@@ -938,6 +993,8 @@ class Component extends DCLogic {
       vid1Open: !!this.state.vid1,
       vid1Label: this.state.vid1 ? 'Back to Photos' : '\u25B6 Video Tour',
       toggleVid1: () => this.setState(s => ({ vid1: !s.vid1 })),
+      yt1Open: !!this.state.yt1, yt1Closed: !this.state.yt1, playYt1: () => this.setState({ yt1: true }),
+      yt2Open: !!this.state.yt2, yt2Closed: !this.state.yt2, playYt2: () => this.setState({ yt2: true }),
       spot2ImgStyle: {
         position: 'absolute', inset: 0, backgroundImage: `url(${spot2Photos[s2Idx]})`,
         backgroundSize: 'cover', backgroundPosition: 'center'

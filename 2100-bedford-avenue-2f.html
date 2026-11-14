@@ -8,6 +8,7 @@
 <body>
 <x-dc>
 <helmet>
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>2100 Bedford Avenue 2F, Brooklyn NY 11226 — 1 Bed Condo for Sale $599,000 | Olof Hermelin</title>
 <meta name="description" content="Contemporary 1-bedroom condo in Prospect Lefferts Gardens with floor-to-ceiling windows, in-unit washer/dryer, deeded storage, and a 421a tax abatement through 2034. Listed by Olof Hermelin, Douglas Elliman.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,7 +35,8 @@
         <a href="index.html#neighborhoods" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Neighborhoods</a>
         <a href="about.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">About</a>
         <a href="valuation.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Valuation</a>
-        <a href="tel:2125550100" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(212) 555-0100</a>
+        <a href="videos.html" style="text-decoration:none;color:rgba(231,240,247,.85);font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;transition:color .3s" style-hover="color:#FFFFFF">Videos</a>
+        <a href="tel:9175537447" style="text-decoration:none;color:#9DC3E0;font-size:11px;letter-spacing:.18em;font-weight:600">(917) 553-7447</a>
         <a href="#showing" style="text-decoration:none;background:#E7F0F7;color:#0A141D;font-size:10px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:12px 24px;transition:all .3s" style-hover="background:#2E6591;color:#E7F0F7">Schedule a Showing</a>
       </div>
     </div>
@@ -49,7 +51,7 @@
       <p style="position:absolute;right:28px;bottom:20px;z-index:3;margin:0;color:#E7F0F7;background:rgba(10,20,29,.55);font-size:11px;letter-spacing:.18em;padding:8px 14px">{{ photoCount }}</p>
       <button onClick="{{ toggleVid }}" style="position:absolute;left:28px;bottom:20px;z-index:5;border:1px solid rgba(231,240,247,.5);background:rgba(10,20,29,.55);color:#E7F0F7;font-family:'Hanken Grotesk',sans-serif;font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600;padding:12px 22px;cursor:pointer;transition:background .3s" style-hover="background:rgba(10,20,29,.85)">{{ vidLabel }}</button>
       <sc-if value="{{ vidOpen }}" hint-placeholder-val="{{ false }}">
-        <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw" title="2100 Bedford Avenue 2F video tour" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
+        <iframe src="https://www.youtube.com/embed/-9ZvNcXj3xw" title="2100 Bedford Avenue 2F video tour" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen="allowfullscreen" style="position:absolute;inset:0;width:100%;height:100%;border:none;z-index:4;background:#000"></iframe>
       </sc-if>
     </div>
     <div style="display:flex;gap:6px;padding:8px 8px;background:#0F2338;overflow-x:auto">
@@ -73,7 +75,7 @@
       <p style="font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#415463;margin:6px 0 0">{{ perSqft }} per Sq.Ft.</p>
       <div style="display:flex;gap:12px;justify-content:flex-end;margin-top:18px">
         <a href="#showing" style="display:inline-block;text-decoration:none;background:#0A141D;color:#E7F0F7;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:15px 30px;transition:background .3s" style-hover="background:#2E6591">Schedule a Showing</a>
-        <a href="tel:2125550100" style="display:inline-block;text-decoration:none;border:1px solid #0A141D;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:14px 30px;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7">Call Olof</a>
+        <a href="tel:9175537447" style="display:inline-block;text-decoration:none;border:1px solid #0A141D;color:#0A141D;font-size:11px;letter-spacing:.26em;text-transform:uppercase;font-weight:500;padding:14px 30px;transition:all .3s" style-hover="background:#0A141D;color:#E7F0F7">Call Olof</a>
       </div>
     </div>
   </div>
@@ -173,8 +175,8 @@
       <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(30px,3vw,44px);margin:0;line-height:1.15">See 2100 Bedford Avenue, 2F in person.</h2>
       <p style="font-size:14px;color:#B9CCDB;margin:22px 0 0;line-height:1.75;max-width:480px">Showings by appointment, seven days a week. Olof personally attends every showing — come with questions about the building, the abatement, and the block.</p>
       <div style="margin-top:36px;display:grid;gap:20px">
-        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Direct</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(212) 555-0100</p></div>
-        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Email</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">olof@olofsellsnyc.com</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Direct</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">(917) 553-7447</p></div>
+        <div><p style="font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#9DC3E0;margin:0 0 4px;font-weight:500">Email</p><p style="font-family:'Newsreader',Georgia,serif;font-size:20px;margin:0">ohermelin@elliman.com</p></div>
       </div>
     </div>
     <sc-if value="{{ showingPending }}" hint-placeholder-val="{{ true }}">
@@ -245,13 +247,14 @@
     <div style="display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(231,240,247,.12)">
       <div>
         <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
-        <p style="font-size:13px;opacity:.65;margin:16px 0 0;line-height:1.9">Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (212) 555-0100 &nbsp;|&nbsp; olof@olofsellsnyc.com</p>
+        <p style="font-size:13px;opacity:.65;margin:16px 0 0;line-height:1.9">Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (917) 553-7447 &nbsp;|&nbsp; ohermelin@elliman.com</p>
       </div>
       <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
         <a href="index.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home</a>
         <a href="listings.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Properties</a>
         <a href="about.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">About</a>
         <a href="valuation.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Valuation</a>
+        <a href="videos.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Videos</a>
         <a href="index.html#contact" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Contact</a>
         <div style="display:flex;align-items:center;gap:10px;opacity:.55">
           <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M3 11.5 12 4l9 7.5"></path><path d="M5.5 10v9h13v-9"></path><path d="M12 8.2 8.5 11h7z" fill="currentColor" stroke="none"></path><path d="M9.8 13h4.4M9.8 15.5h4.4"></path></svg>
