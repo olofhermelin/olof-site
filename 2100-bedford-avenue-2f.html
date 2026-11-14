@@ -8,6 +8,24 @@
 <body>
 <x-dc>
 <helmet>
+<script>
+(function(){ if (window.__leadHook) return; window.__leadHook = true;
+document.addEventListener('submit', function(e){
+  var f = e.target; if (!f || f.tagName !== 'FORM') return;
+  e.preventDefault();
+  var d = { access_key: '1d90787f-ae1f-4a98-9497-c8bc03bf3d11', subject: 'New website lead – ' + document.title, from_name: 'olofhermelin.com', page: location.href };
+  f.querySelectorAll('input,textarea,select').forEach(function(el, i){
+    if (el.type === 'hidden' || el.type === 'submit' || el.type === 'button') return;
+    var v = el.type === 'checkbox' ? (el.checked ? 'Yes' : '') : (el.value || '').trim();
+    if (!v) return;
+    var lab = el.getAttribute('name') || el.getAttribute('aria-label') || el.getAttribute('placeholder') || (el.closest('label') && el.closest('label').innerText.trim().slice(0, 60)) || ('Field ' + (i + 1));
+    if (el.type === 'email' && !d.email) lab = 'email';
+    d[lab] = v;
+  });
+  fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(d) }).catch(function(){});
+}, true);
+})();
+</script>
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>2100 Bedford Avenue 2F, Brooklyn NY 11226 — 1 Bed Condo for Sale $599,000 | Olof Hermelin</title>
 <meta name="description" content="Contemporary 1-bedroom condo in Prospect Lefferts Gardens with floor-to-ceiling windows, in-unit washer/dryer, deeded storage, and a 421a tax abatement through 2034. Listed by Olof Hermelin, Douglas Elliman.">
