@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free NYC Home Valuation — What Is Your Home Worth? | Olof Hermelin, Douglas Elliman</title>
+<meta name="description" content="Get a free, confidential valuation of your NYC co-op, condo, or townhouse — prepared personally by Olof Hermelin, not an algorithm. Comparable sales, pricing strategy, and a clear number within 24 hours.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Olof Hermelin — Douglas Elliman">
+<meta property="og:title" content="Free NYC Home Valuation — What Is Your Home Worth? | Olof Hermelin, Douglas Elliman">
+<meta property="og:description" content="Get a free, confidential valuation of your NYC co-op, condo, or townhouse — prepared personally by Olof Hermelin, not an algorithm. Comparable sales, pricing strategy, and a clear number within 24 hours.">
+<meta property="og:url" content="https://www.olofsellsnyc.com/valuation.html">
+<link rel="canonical" href="https://www.olofsellsnyc.com/valuation.html">
+<script>(function(){var h=location.hostname;if(!/olofsellsnyc\.com$|olofhermelin\.com$/.test(h))return;var s=document.createElement('script');s.defer=true;s.src='/_vercel/insights/script.js';document.head.appendChild(s);})();</script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -142,7 +151,7 @@ document.addEventListener('submit', function(e){
   <div data-screen-label="Valuation Results" style="padding:100px 6vw">
     <div style="text-align:center;margin-bottom:52px">
       <p style="font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:#2E6591;margin:0 0 14px;font-weight:500">Pricing That Performs</p>
-      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0">Recent seller outcomes.</h2>
+      <h2 style="font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(28px,2.8vw,42px);margin:0">Recent sales.</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(22,35,46,.14);border:1px solid rgba(22,35,46,.14);max-width:1100px;margin:0 auto">
       <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="3">
@@ -153,7 +162,6 @@ document.addEventListener('submit', function(e){
         </div>
       </sc-for>
     </div>
-    <p style="font-size:11px;color:#8095A6;margin:28px auto 0;letter-spacing:.03em;text-align:center;max-width:1100px">Representative placeholder outcomes for design demonstration purposes.</p>
   </div>
 
   <!-- FAQ -->
@@ -181,10 +189,6 @@ document.addEventListener('submit', function(e){
       <div>
         <p style="font-family:'Newsreader',Georgia,serif;font-size:21px;letter-spacing:.1em;text-transform:uppercase;margin:0;line-height:1.2">Olof Hermelin<span style="display:block;font-family:'Hanken Grotesk',sans-serif;font-size:9px;letter-spacing:.44em;color:#9DC3E0;text-transform:uppercase;font-weight:500">New York City</span></p>
         <p style="font-size:13px;opacity:.65;margin:16px 0 0;line-height:1.9">Lic. Real Estate Salesperson at Douglas Elliman<br></br>m: (917) 553-7447 &nbsp;|&nbsp; ohermelin@elliman.com</p>
-        <div style="display:flex;gap:14px;margin-top:22px">
-          <a href="https://www.instagram.com/olofsellsnyc/" target="_blank" rel="noopener" aria-label="Instagram — olofsellsnyc" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">IG</a>
-          <a href="https://www.youtube.com/@olofsellsnyc" target="_blank" rel="noopener" aria-label="YouTube — olofsellsnyc" style="width:38px;height:38px;border:1px solid rgba(231,240,247,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#E7F0F7;text-decoration:none;transition:all .3s" style-hover="background:#2E6591;border-color:#2E6591">YT</a>
-        </div>
       </div>
       <div style="display:flex;gap:28px;flex-wrap:wrap;align-items:center">
         <a href="index.html" style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#E7F0F7;opacity:.7;text-decoration:none;transition:opacity .3s" style-hover="opacity:1">Home</a>
@@ -230,9 +234,9 @@ class Component extends DCLogic {
         { title: 'Net-proceeds estimate', text: 'What you\u2019d actually walk away with after transfer taxes, flip tax, and fees.' }
       ],
       outcomes: [
-        { stat: 'Over asking', addr: '21 East 26th Street, PH — Flatiron', note: 'Record-setting sale for the building after a structured best-and-final round.' },
-        { stat: '104% of ask · 9 days', addr: '158 Mercer Street, 4A — SoHo', note: 'Priced to create competition; closed above asking in under two weeks.' },
-        { stat: 'Full price, off-market', addr: 'Townhouse — Greenwich Village', note: 'Quietly marketed to qualified buyers only; full-price contract in three weeks.' }
+        { stat: '$1,800,000', addr: '60 East 8th Street, 31J — Greenwich Village', note: '2 bedroom, 2 bath condop. Sold 2025. Represented the seller.' },
+        { stat: '$1,700,000', addr: '1400 Fifth Avenue, THE2 — South Harlem', note: '4 bedroom, 3.5 bath condo. Sold 2024. Represented the seller.' },
+        { stat: '$1,575,000', addr: '60 East 8th Street, 34D — Greenwich Village', note: '1 bedroom, 1 bath condop. Sold 2025. Represented the seller.' }
       ],
       faqs: [
         { q: 'Is it really free?', a: 'Yes — free and without obligation. It\u2019s how many of our client relationships begin, sometimes years before a sale.' },
