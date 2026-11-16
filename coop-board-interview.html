@@ -13,7 +13,7 @@
 document.addEventListener('submit', function(e){
   var f = e.target; if (!f || f.tagName !== 'FORM') return;
   e.preventDefault();
-  var d = { access_key: '1d90787f-ae1f-4a98-9497-c8bc03bf3d11', subject: 'New website lead – ' + document.title, from_name: 'olofhermelin.com', page: location.href };
+  var d = { access_key: '1d90787f-ae1f-4a98-9497-c8bc03bf3d11', subject: 'New website lead – ' + document.title, from_name: 'olofsellsnyc.com', page: location.href };
   f.querySelectorAll('input,textarea,select').forEach(function(el, i){
     if (el.type === 'hidden' || el.type === 'submit' || el.type === 'button') return;
     var v = el.type === 'checkbox' ? (el.checked ? 'Yes' : '') : (el.value || '').trim();
